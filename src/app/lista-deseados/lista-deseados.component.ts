@@ -82,7 +82,7 @@ export class ListaDeseadosComponent implements OnInit{
 
   // Esta función añade un juego al carrito
   addCarrito(id: number) {
-    let verificado = sessionStorage.getItem("Verficado");
+    let verificado = sessionStorage.getItem("Verificado");
     if (verificado == "true") {
       let cantidadCarrito = JSON.parse(sessionStorage.getItem("cantidadCarrito")!);
       if (!(cantidadCarrito.includes(id))) {
