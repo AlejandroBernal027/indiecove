@@ -60,6 +60,7 @@ export class LoginComponent {
     )
   }
 
+  // Esta función manda los datos para iniciar sesión
   async sendLogin() {
     if (this.loginForm.valid) {
       let rol = this.loginForm.value.contrasena.slice(0, 3);

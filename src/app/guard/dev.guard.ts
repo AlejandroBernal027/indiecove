@@ -13,6 +13,7 @@ export class devGuard {
    
       let rol = sessionStorage.getItem("Rol")
 
+      // La página que más protegida tiene que estar es la de publicar juego, ya que solo pueden entrar los desarrolladores
       if (rol !== "desarrollador") { 
         this.router.navigate(['/home'])    
         return false;

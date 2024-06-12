@@ -14,6 +14,7 @@ export class AuthService {
 
   constructor( private _afAuth: AngularFireAuth) { }
 
+  // Esta función hace el login con firebase
   async login(email: string, contrasena: string) {
     try {
       const result = await this._afAuth.signInWithEmailAndPassword(email, contrasena);
@@ -26,6 +27,7 @@ export class AuthService {
     
   }
 
+  // Esta función hace el registro con firebase
   async register(email: string, contrasena: string) {
     try {
       const result = await this._afAuth.createUserWithEmailAndPassword(email, contrasena);
@@ -38,6 +40,7 @@ export class AuthService {
     }
   }
 
+  // Esta función hace el logout con firebase
   async logOut() {
     try {
       await this._afAuth.signOut();
@@ -47,14 +50,17 @@ export class AuthService {
     }
   }
   
+  // Esta función manda el email de verificación
   async sendVerificationEmail() {
     return (await this._afAuth.currentUser)?.sendEmailVerification();
   }
 
+  // Esta función obtiene el usuario actual
   getCurrentUser() {
     return this._afAuth.authState.pipe(first()).toPromise()
   }
 
+  // Esta función manda un email para cambiar la contraseña con firebase
   async updatePassword(email: string) {
     try {
       return this._afAuth.sendPasswordResetEmail(email);

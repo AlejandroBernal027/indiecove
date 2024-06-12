@@ -4,24 +4,20 @@
     </span>
 
     <div class="cambiarContrasenaContenido">
-        <form class="cambiarContrasenaForm">
+        <form class="cambiarContrasenaForm" [formGroup]="editContrasena">
             <mat-form-field class="full-width">
               <mat-label>Introduce tu email</mat-label>
-              <input matInput placeholder="">
+              <input matInput placeholder="" formControlName="email" name="email">
+              @if (editContrasena.get('email')?.hasError('required')) {
+                <mat-error>
+                    Email no válido
+                </mat-error>
+              }
             </mat-form-field>
           
-            <mat-form-field class="full-width">
-                <mat-label>Introduce la contraseña nueva</mat-label>
-                <input matInput placeholder="">
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-                <mat-label>Repite la contraseña nueva</mat-label>
-                <input matInput placeholder="">
-            </mat-form-field>
           </form>
 
-          <button mat-raised-button color="accent" class="cambiaContrasena">
+          <button mat-raised-button color="accent" class="cambiaContrasena" (click)="submitNuevaContrasena()">
             Cambiar contraseña
           </button>
     </div>

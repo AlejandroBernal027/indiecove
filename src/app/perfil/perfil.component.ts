@@ -36,6 +36,7 @@ export class PerfilComponent implements OnInit{
   ngOnInit(): void {
     this.cargarUsuario();
     this.getRol();
+    // los breakpointObserver los uso para que la página sea más responsive
     this.breakpointObserver
       .observe(['(min-width: 471px)'])
       .subscribe((state: BreakpointState) => {
@@ -45,15 +46,6 @@ export class PerfilComponent implements OnInit{
           this.changeLayout = true;
         }
       });
-  }
-
-  downloadMyFile(path: string, file: string){
-    const link = document.createElement('a');
-    link.setAttribute('href', path);
-    link.setAttribute('download', file);
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
   }
 
   getRol(){
@@ -74,6 +66,7 @@ export class PerfilComponent implements OnInit{
     });
   }
 
+  // Esta funcion carga al usuario dependiendo del rol y del id del usuario
   cargarUsuario(){
     let idUsuario = sessionStorage.getItem("Id Usuario");
     let rol = sessionStorage.getItem("Rol");
@@ -130,6 +123,7 @@ export class PerfilComponent implements OnInit{
     }
   }
 
+  // Si es un jugador carga los juegos que tiene comprado
   cargarJuegosUsuario(id: number) {
     this._userService.getJuegosCompradosPor(id).subscribe({
       next: (data: Juego[]) => {
@@ -141,6 +135,7 @@ export class PerfilComponent implements OnInit{
     })
   }
 
+  // Si es un desarrollador carga los juegos que ha publicado
   cargarJuegoDev(id: number) {
     this._userService.getJuegosHechosPor(id).subscribe({
       next: (data: Juego[]) => {
@@ -152,6 +147,7 @@ export class PerfilComponent implements OnInit{
     })
   }
 
+  // Si es un adminstrador cargar a todos los usuarios
   cargarUsuarios() {
     this._userService.getAllUsers().subscribe({
       next: (data: Jugador[]) => {
@@ -169,6 +165,7 @@ export class PerfilComponent implements OnInit{
     })
   }
 
+  // Esta función cierra la sesión
   async logout() {
     this._authService.logOut();
     sessionStorage.removeItem("Email");

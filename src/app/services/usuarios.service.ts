@@ -13,6 +13,7 @@ export class UsuariosService {
   
   constructor(private _http: HttpClient) { }
 
+  // Los login, hacen login de los usuarios
   loginUser(email: string): Observable<Jugador> {
     return this._http.get<Jugador>(`${this.URL_API}/loginJugador/${email}`);
   }
@@ -25,6 +26,7 @@ export class UsuariosService {
     return this._http.get<Administrador>(`${this.URL_API}/loginAdministrador/${email}`);
   }
 
+  // Los get obtienen los datos de un usuario
   getUser(id: string): Observable<Jugador> {
     return this._http.get<Jugador>(`${this.URL_API}/jugador/${id}`);
   }
@@ -37,6 +39,7 @@ export class UsuariosService {
     return this._http.get<Administrador>(`${this.URL_API}/administrador/${id}`);
   }
 
+  // Los add añaden un usuario a la base de datos
   addUser(jugador: Jugador): Observable<Jugador> {
     return this._http.post<Jugador>(`${this.URL_API}/registrarJugador`, jugador);
   }
@@ -49,14 +52,17 @@ export class UsuariosService {
     return this._http.post<Administrador>(`${this.URL_API}/registrarAdministrador`, administrador);
   }
 
+  // Obtiene los juegos comprados por el usuario
   getJuegosCompradosPor(id: number): Observable<Juego[]> {
     return this._http.get<Juego[]>(`${this.URL_API}/getGamesOwnedBy/${id}`);
   }
 
+  // Obtiene los juegos hechos por el desarrollador
   getJuegosHechosPor(id: number): Observable<Juego[]> {
     return this._http.get<Juego[]>(`${this.URL_API}/getGamesMadeBy/${id}`)
   }
 
+  // Los update actualizan los datos de los usuarios
   updateDatosUser(usuario: Jugador): Observable<Jugador> {
     return this._http.put<Jugador>(`${this.URL_API}/modificarJugador`, usuario)
   }
@@ -69,6 +75,7 @@ export class UsuariosService {
     return this._http.put<Administrador>(`${this.URL_API}/modificarAdministrador`, usuario)
   }
 
+  // Los getAll, obtienen todos los jugadores y los desarrolladores
   getAllUsers(): Observable<Jugador[]> {
     return this._http.get<Jugador[]>(`${this.URL_API}/jugadores`);
   }
@@ -77,6 +84,7 @@ export class UsuariosService {
     return this._http.get<Desarrollador[]>(`${this.URL_API}/desarrolladores`);
   }
 
+  // Obtiene los juegos de la lista de deseados del usuario
   getJuegosDeListaDeseados(id: number): Observable<Juego[]> {
     return this._http.get<Juego[]>(`${this.URL_API}/getGamesWishListedBy/${id}`);
   }
