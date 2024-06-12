@@ -1,0 +1,444 @@
+#main {
+    display: flex;
+    margin-top: 2em;
+    margin-right: 4em;
+    justify-content: space-evenly;
+    min-height: 75%;
+}
+
+#filtros {
+    width: 22.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    position: sticky;
+    top: 5%;
+}
+
+#filtros h3 {
+    font-size: 31px;
+}
+
+.filtrosRadio {
+    display: flex;
+    flex-direction: column;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+}
+
+.radioOption p {
+    margin: 0;
+}
+
+.mainOptions, .secondaryOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainOptions span {
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider {
+    margin-bottom: 2em;
+}
+
+.mat-mdc-slider {
+    min-width: 250px;
+}
+
+.select {
+    margin-bottom: 1em;
+}
+
+#mainTienda {
+    width: 65%;
+}
+
+#mainTienda .header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#mainTienda .header h2 {
+    font-size: 39px;
+}
+
+.vista {
+    display: flex;
+    align-items: center;
+}
+
+.vista p {
+    font-size: 16px;
+    margin: 0 1em 0 0;
+}
+
+mat-button-toggle-group {
+    border-radius: 25px;
+}
+
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+    background-color: #C9E4F6;
+}
+
+.gridViewGames {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gridViewGames .mdc-evolution-chip-set__chips {
+    justify-content: space-around;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-disabled-label-text-color: #000;
+    --mdc-chip-elevated-disabled-container-color: #92C9EE;
+    --mat-chip-disabled-container-opacity: 1;
+    font-weight: bold;
+}
+
+.gridViewGames .example-card {
+    max-width: 250px;
+    margin: 2em 0;
+    background-color: #1B6FA7;
+    box-shadow: 10px 10px 5px #AEAFB0;
+}
+
+.gridViewGames .example-card:hover {
+    background-color: #124B71;
+    cursor: pointer;
+    box-shadow: 10px 10px 5px 5px #AEAFB0;
+}
+
+.gridViewGames .example-card:hover .mat-mdc-standard-chip {
+    --mdc-chip-elevated-disabled-container-color: #5CAEE5;
+}
+
+.relleno-card {
+    min-width: 250px;
+    max-height: 0px;
+    background-color: #E8EAEB;
+}
+
+.gridViewGames .sale {
+    position: absolute;
+    top: -3%;
+    right: 5%;
+}
+
+.gridViewGames .sale p {
+    position: absolute;
+    margin: 0;
+    top: 35%;
+    left: 15%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.gridViewGames mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 1em;
+}
+
+.gridViewGames mat-card .gameImg {
+    object-fit: cover;
+    height: 250px;
+    width: 250px;
+}
+
+.gridViewGames mat-card-header mat-card-title{
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+
+.gridViewGames mat-card-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    padding: 0 1em 1em 1em;
+}
+
+.smallTitle {
+    font-size: 18px;
+    margin: 0;
+}
+
+.listViewGames {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 2em;
+    margin: 2em 0;
+}
+
+.cardContainer {
+    display: flex;
+    width: 100%;
+    box-shadow: 10px 10px 5px #AEAFB0;
+    background-color: #1B6FA7;
+}
+
+
+.listViewGames mat-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #00000000;
+    color: white;
+}
+
+.cardContainer:hover {
+    box-shadow: 10px 10px 5px 5px #AEAFB0;
+    cursor: pointer;
+    background-color: #124B71;
+}
+
+.listViewGames mat-card:hover {
+    cursor: pointer;
+    box-shadow: 10px 10px 5px 5px #AEAFB0;
+}
+
+.listViewGames mat-card:hover .mat-mdc-standard-chip, .listViewGames .cardContainer:hover .mat-mdc-standard-chip {
+    --mdc-chip-elevated-disabled-container-color: #5CAEE5;
+}
+
+.listViewGames mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    width: 45%;
+}
+
+.listViewGames mat-card-content {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 55%;
+}
+
+.listViewGames mat-card-title {
+    font-size: 31px;
+}
+
+.cardContainer > img {
+    width: 140px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.cardContainer .sale {
+    position: absolute;
+    left: 1%;
+    top: -10%
+}
+
+.cardContainer .sale p {
+    position: absolute;
+    margin: 0;
+    top: 35%;
+    left: 15%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #000;
+}
+
+.precio {
+    background-color: #EECA97;
+    position: absolute;
+    top: 47.5%;
+    left: -5%;
+    border-top-right-radius: 10px;
+    border-end-end-radius: 10px;
+    box-shadow: -5px 5px 5px rgba(39, 39, 39, 0.158);
+}
+
+.precio h2 {
+    margin: 0;
+    padding: 0.25em 0.5em;
+    font-size: 25px;
+}
+
+.precioList {
+    width: 25%;
+    background-color: #EECA97;
+    border-radius: 10px;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.precioList h2 {
+    margin: 0;
+    font-size: 25px;
+    padding: 0.25em 0.5em;
+    color: black;
+    text-align: center;
+}
+
+@media (max-width: 1440px) {
+    .listViewGames mat-card-header {
+        text-align: center;
+        margin-left: 2em;
+    }
+
+    .precioList {
+        width: 40%;
+    }
+}
+
+@media (max-width: 1265px) {
+    .precioList {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #main {
+        margin-right: 0;
+    }
+
+    #mainTienda {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #filtros {
+        width: 45%;
+    }
+
+    .header {
+        margin: 0 3em;
+        width: 90%;
+    }
+
+    .gridViewGames {
+        justify-content: space-around;
+    }
+
+    .gridViewGames .example-card {
+        margin: 2em;
+    }
+
+    .listViewGames { 
+        width: 90%;
+    }
+    
+    .listViewGames mat-card-title {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .cardContainer .sale {
+        position: absolute;
+        left: -5%;
+        top: -10%
+    }
+
+    .cardContainer .sale p {
+        font-size: 20px;
+    }
+
+    .cardContainer .sale img {
+        width: 60px;
+        height: 80px;
+    }
+
+    .precioList h2 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 912px) {
+    .listViewGames mat-card { 
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #main {
+        margin-top: 0;
+        min-height: 78%;
+    }
+
+    mat-drawer {
+        width: 50%;
+        background-color: #E8EAEB;
+    }
+
+    mat-drawer-container {
+        background-color: #E8EAEB;
+    }
+
+    mat-drawer-content {
+        display: flex;
+        justify-content: center;
+    }
+
+    #mainTienda {
+        width: 90%;
+    }
+
+    .header {
+        margin-top: 2em;
+    }
+
+    #filtros {
+        width: 100%;
+        top: 1%
+    }
+
+    .openFiltros {
+        letter-spacing: normal;
+    }
+
+    mat-card-title {
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 570px) {
+    .gridViewGames .example-card {
+        margin: 2em;
+    }
+
+    #mainTienda .header h2 {
+        font-size: 29px;
+    }
+
+    mat-drawer {
+        width: 75%;
+    }
+}
+
+@media (max-width: 425px) {
+    mat-drawer {
+        width: 100%;
+    }
+
+    #mainTienda {
+        width: 100%;
+    }
+
+    #mainTienda .header {
+        margin: 2em 0 0 0;
+        width: 75%;
+    }
+}

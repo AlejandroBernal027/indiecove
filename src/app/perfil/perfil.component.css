@@ -1,0 +1,209 @@
+#Contenedor {
+    display: flex;
+    flex-direction: column;
+    min-height: 78%;
+}
+
+.perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    border-bottom: 1px solid black;
+}
+
+.perfil>img {
+    width: 150px;
+    height: 150px;
+}
+
+.informacionUsuario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 2em;
+}
+
+.informacionUsuario p {
+    margin-top: 1em;
+    margin-bottom: 0;
+    text-decoration: underline
+}
+
+.informacionUsuario span {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.informacionUsuario span h1, .informacionUsuario span h2 {
+    margin: 0;
+    padding-right: 1em;
+}
+
+.informacionUsuario span h1 {
+    margin: 0.5em 0;
+    font-size: 39px;
+}
+
+.informacionUsuario span h2 {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.logOut {
+    font-size: 20px;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.biblioteca {
+    height: 70%;
+}
+
+.biblioteca h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 1em 1.5em 1.5em 1.5em;
+}
+
+.juegos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.juego {
+    display: flex;
+    width: 75%;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.user {
+    display: flex;
+    width: 75%;
+    margin-bottom: 2em;
+}
+
+.juego mat-card, .user mat-card {
+    width: 100%;
+    background-color: #1B6FA7;
+}
+
+.juego .imgJuego, .user .imgJuego {
+    width: 125px;
+    height: 125px;
+}
+
+.juego mat-card-content, .user mat-card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.juego mat-card-content p, .user mat-card-content p {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.descargar {
+    letter-spacing: normal;
+    padding: 1em;
+    font-size: 20px;
+}
+
+.puntuacionMedia {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 11%;
+}
+
+.puntuacionMedia img {
+    margin-left: 6px;
+}
+
+@media (max-width: 768px) {
+    .perfil > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .perfil span img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .informacionUsuario span h1 {
+        font-size: 29px;
+    }
+
+    .informacionUsuario span h2 {
+        font-size: 20px;
+    }
+
+    .descargar {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 470px) {
+    .perfil > img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .juego mat-card-content, .user mat-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    .juego mat-card-content p, .user mat-card-content p {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .informacionUsuario span h1 {
+        font-size: 25px;
+        padding-right: 0.5em;
+    }
+
+    .informacionUsuario span h2 {
+        font-size: 16px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 375px) {
+    .perfil > img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .perfil span img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .informacionUsuario span h1 {
+        font-size: 20px;
+        padding-right: 0.5em;
+    }
+
+    .informacionUsuario span h2 {
+        font-size: 14px;
+    }
+
+    .juego mat-card-content p, .user mat-card-content p {
+        font-size: 16px;
+        text-align: center;
+    }
+}

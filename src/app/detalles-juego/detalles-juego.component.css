@@ -1,0 +1,304 @@
+.upperPart {
+    display: grid;
+    grid-template-columns: 60% auto;
+    grid-gap: 5em;
+    margin: 3em 5em;
+}
+
+.gridListImagenes img {
+    height: 100%;
+    width: 100%;
+}
+
+.imagenesSeleccion img {
+    cursor: pointer;
+}
+
+.imagenesSeleccion img:hover {
+    filter: brightness(50%)
+}
+
+.textPrincipal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.textPrincipal .upper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textPrincipal h1 {
+    font-size: 64px;
+    margin-bottom: 0.5em;
+    line-height: normal;
+    text-align: center;
+}
+
+.textPrincipal span h2 {
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+}
+
+.textPrincipal p {
+    font-size: 25px;
+    line-height: 150%;
+    text-align: justify;
+    letter-spacing: normal;
+}
+
+.textPrincipal button {
+    font-size: 31px;
+    padding: 1em;
+    letter-spacing: normal;
+}
+
+.textPrincipal .addListaDeseados {
+    font-size: 20px;
+    padding: 1em;
+    letter-spacing: normal;
+}
+
+.mat-mdc-unelevated-button.mat-accent {
+    --mdc-filled-button-container-color: #EABD7D;
+    --mdc-filled-button-container-shape: 10px;
+}
+
+.lowerPart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: normal;
+}
+
+.extraInfo {
+    text-align: center;
+    font-size: 25px;
+    line-height: 200%;
+    margin-bottom: 3em;
+    width: 85%;
+}
+
+.valoracionForm {
+    width: 70%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.valoracionForm form {
+    width: 100%;
+}
+
+.valoracionForm form .headerValoracionForm{
+    display: flex;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.valoracionForm form .headerValoracionForm .dejarValoracion {
+    font-size: 25px;
+}
+
+.valoracionForm form .footerValoracionForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+.valoracionForm form .footerValoracionForm mat-form-field {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1em;
+}
+
+textarea {
+    resize: none;
+}
+
+.valoraciones {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 2em;
+    width: 80%;
+    margin-bottom: 2em;
+}
+
+.valoraciones h1 {
+    font-size: 49px;
+    font-weight: bold;
+}
+
+.valoracion {
+    display: flex;
+    background-color: #F7F8F8;
+    padding: 1em;
+    box-shadow: -15px 0px #505659;
+    margin-left: 15px;
+}
+
+.valoracion .userIcon {
+    margin: 1em;
+}
+
+.contenidoValoracion {
+    width: 100%;
+}
+
+.headerValoracion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1em;
+    margin-bottom: 1.5em;
+}
+
+.headerValoracion p {
+    margin: 0;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.headerValoracion img {
+    margin: 0.1em;
+}
+
+.comentarioValoracion p {
+    margin: 0;
+    margin-left: 1em;
+    font-size: 16px;
+}
+
+@media (max-width: 1440px) {
+    .textPrincipal h1 {
+        font-size: 52px;
+        margin-bottom: 0.5em;
+    }
+
+    .textPrincipal span h2 {
+        font-size: 20px;
+    }
+
+    .textPrincipal p {
+        font-size: 20px;
+    }
+
+    .lowerPart p {
+        font-size: 20px;
+    }
+
+    .valoraciones h1 {
+        font-size: 39px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .textPrincipal span h2 {
+        font-size: 16px;
+    }
+
+    .textPrincipal p {
+        font-size: 16px;
+    }
+
+    .textPrincipal button {
+        font-size: 25px;
+    }
+
+    .extraInfo {
+        margin: 0em 5em 2em;
+        line-height: 150%;
+    }
+
+    .lowerPart p {
+        font-size: 16px;
+    }
+
+    .comentarioValoracion p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .upperPart {
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 3em;
+    }
+
+    .textPrincipal span h2 {
+        font-size: 20px;
+    }
+
+    .textPrincipal button {
+        margin: 1em 0;
+    }
+
+    .extraInfo {
+        margin: 0em 3em 2em;
+        line-height: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .upperPart {
+        margin: 2em 1em;
+    }
+
+    .extraInfo {
+        margin: 0em 1em 1em;
+        line-height: 100%;
+    }
+
+    .valoraciones h1 {
+        font-size: 25px;
+    }
+
+    .headerValoracion p {
+        font-size: 14px;
+    }
+
+    .headerValoracion img {
+        width: 10px;
+        height: 10px;
+        
+    }
+
+    .valoracion {
+        display: flex;
+        align-items: center;
+    }
+
+    .valoracion .userIcon {
+        width: 64px;
+        height: 64px;
+        margin: 0;
+    }
+
+    .comentarioValoracion p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .valoracion {
+        flex-direction: column;
+    }
+
+    .headerValoracion {
+        margin-left: 0;
+        width: 90%;
+    }
+
+    .contenidoValoracion {
+        display: flex;
+        align-items: center;
+    }
+}

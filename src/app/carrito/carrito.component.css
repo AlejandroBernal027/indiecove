@@ -1,0 +1,333 @@
+#Contenedor {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    grid-gap: 5%;
+    min-height: 78%;
+    margin: 0 4%;
+}
+
+.datos {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 2em;
+    height: 100%;
+}
+
+.datos h1 {
+    margin-left: 13%;
+    font-weight: bold;
+    margin-bottom: 1em;
+    font-size: 31px;
+    font-family: Lora;
+}
+
+.carrito h1 {
+    margin-bottom: 0.5em;
+    font-size: 31px;
+    font-weight: bold;
+    font-family: Lora;
+}
+
+.facturacionForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.facturacionForm .full-width {
+    margin-bottom: 1em;
+}
+
+.PagoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.datosTarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.formTarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.formPrepago {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.full-width, .full-width2 {
+    width: 75%;
+}
+
+.full-width2 {
+    margin-bottom: 1em;
+}
+
+.realizarCompra {
+    position: absolute;
+    left: 25%;
+    margin-top: 2em;
+    font-size: 25px;
+    letter-spacing: normal;
+    padding: 1em 1.5em;
+}
+
+.opcionesPago {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.carrito {
+    margin-top: 2em;
+    margin-left: 1em;
+}
+
+.contenidoCarrito {
+    background-color: #FBF2E5;
+    height: fit-content;
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+.juego {
+    display: flex;
+    padding: 1em;
+}
+
+.juego p {
+    font-size: 16px;
+}
+
+.juego .imgJuego {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.juego mat-card {
+    background-color: #1B6FA7;
+    width: 100%;
+}
+
+mat-card-content {
+    display: grid;
+    grid-template-columns: 40% 30% 10%;
+    grid-gap: 1em;
+    height: 100%;
+    padding: 0;
+}
+
+mat-card-content p {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    color: white;
+}
+
+mat-card-content .name {
+    margin-left: 1em;
+}
+
+mat-card-content span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.discount {
+    background-color: #FFEA2D;
+    color: black;
+}
+
+.precio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 1em;
+}
+
+.precio > p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.calculoPrecio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-bottom: 1px solid black;
+}
+
+.calculoPrecio p {
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.delete {
+    cursor: pointer;
+}
+
+
+@media (max-width: 1300px) {
+    .juego p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .datos h1 {
+        margin-left: 5%;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    #Contenedor {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-gap: 0%;
+        min-height: 78%;
+        margin: 0 4%;
+    }
+
+    .datosVert {
+        display: flex;
+        flex-direction: column;
+        margin: 2em 0;
+    }
+
+    .facturacionForm {
+        margin-bottom: 2em;
+    }
+
+    .facturacionForm .full-width, .datosTarjeta .full-width2 {
+        width: 45%;
+    }
+
+    .pagoTarjetaDoble {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+    
+    .twoInputDiv {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pagoPrepagoDoble {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2em;
+    }
+
+    .carrito {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .botonCompra {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .realizarCompra {
+        position: relative;
+        margin-top: 0em;
+        left: 0;
+    }
+}
+
+@media (max-width: 860px) {
+
+    #Contenedor {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        grid-gap: 0%;
+        min-height: 78%;
+        margin: 0 4%;
+    }
+
+    .facturacionForm {
+        height: auto;
+    }
+
+    .facturacionForm .full-width, .datosTarjeta .full-width2, .datosTarjeta .full-width {
+        width: 90%;
+    }
+
+    .facturacionForm .full-width, .datosTarjeta .full-width {
+        margin-bottom: 1em;
+    }
+
+    mat-card-content span img {
+        width: 15px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 675px) {
+    #Contenedor {
+        display: flex;
+        flex-direction: column;
+        min-height: 78%;
+        margin: 0;
+    }
+
+    .juego {
+        justify-content: center;
+    }
+
+    .juego mat-card {
+        width: auto;
+        max-width: 175px;
+    }
+
+    .juego .name {
+        margin: 0;
+        font-size: 20px;
+        text-align: center;
+        margin: 0.5em
+    }
+
+    .juego .imgJuego {
+        width: 175px;
+        height: 175px;
+    }
+
+    mat-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    mat-card-content .precioYBorrado {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .realizarCompra {
+        font-size: 20px;
+        margin-bottom: 1em;
+    }
+}

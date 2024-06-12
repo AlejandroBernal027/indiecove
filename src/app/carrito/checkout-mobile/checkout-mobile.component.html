@@ -1,0 +1,155 @@
+<div class="datosVert">
+    
+    <div class="datosFacturacion">
+        <h1>Datos de facturación</h1>
+
+        <form class="facturacionForm" [formGroup]="datosFacturaForm">
+            
+                <mat-form-field class="full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre" name="nombre">
+                    @if (datosFacturaForm.get('nombre')?.hasError('required')) {
+                        <mat-error>
+                            Nombre no válido
+                        </mat-error>
+                    }
+                </mat-form-field>
+            
+                <mat-form-field class="full-width">
+                    <mat-label>DNI</mat-label>
+                    <input matInput type="text" formControlName="dni" name="dni">
+                    @if (datosFacturaForm.get('dni')?.hasError('required') || datosFacturaForm.get('dni')?.hasError('pattern')) {
+                        <mat-error>
+                            DNI no válido
+                        </mat-error>
+                    }
+                </mat-form-field>
+           
+            
+            
+                <mat-form-field class="full-width">
+                    <mat-label>Pais</mat-label>
+                    <mat-select #selectPais formControlName="pais" name="pais">
+                        @for (pais of paises; track pais) {
+                            <mat-option [value]="pais">{{pais}}</mat-option>
+                        }
+                        @if (datosFacturaForm.get('pais')?.hasError('required')) {
+                          <mat-error>
+                            País no válido
+                          </mat-error>
+                        }
+                    </mat-select>
+                </mat-form-field>
+    
+                <mat-form-field class="full-width">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput type="text" formControlName="direccion" name="direccion">
+                    @if (datosFacturaForm.get('direccion')?.hasError('required')) {
+                        <mat-error>
+                            Dirección no válida
+                        </mat-error>
+                    }
+                  </mat-form-field>
+            
+
+            
+                <mat-form-field class="full-width">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select [disabled]="selectPais.value == 'España' ? false : true" formControlName="provincia" name="provincia">
+                        @for (provincia of provincias; track provincia) {
+                          <mat-option [value]="provincia">{{provincia}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width">
+                  <mat-label>Teléfono</mat-label>
+                  <input matInput type="tel" formControlName="telefono" name="telefono">
+                  @if (datosFacturaForm.get('telefono')?.hasError('required') || datosFacturaForm.get('telefono')?.hasError('pattern')) {
+                      <mat-error>
+                          Teléfono no válido
+                      </mat-error>
+                  }
+                </mat-form-field>
+            
+          
+        </form>
+
+    </div>
+
+    <div class="datosPago">
+        <h1>Datos de Pago</h1>
+
+        <div class="PagoForm">
+
+            <mat-radio-group class="opcionesPago" aria-label="Select an option">
+                <mat-radio-button value="1" #button1 checked>Tarjeta de crédito</mat-radio-button>
+                <mat-radio-button value="2" #button2>Tarjeta de prepago</mat-radio-button>
+            </mat-radio-group>
+            
+            <div class="datosTarjeta">
+                @if (button1.checked == true) {
+                    <form class="tarjetaForm" [formGroup]="pagoTarjetaForm">
+                        <mat-form-field class="full-width2">
+                            <mat-label>Nombre de la tarjeta</mat-label>
+                            <input matInput type="text" formControlName="nombreTarjeta" name="nombreTarjeta">
+                                @if (pagoTarjetaForm.get('nombreTarjeta')?.hasError('required')) {
+                                    <mat-error>
+                                        Nombre de la tarjeta no válido
+                                    </mat-error>
+                                }
+                        </mat-form-field>
+              
+                        <mat-form-field class="full-width2">
+                            <mat-label>Número de tarjeta</mat-label>
+                            <input matInput type="text" formControlName="numeroTarjeta" name="numeroTarjeta">
+                                @if (pagoTarjetaForm.get('numeroTarjeta')?.hasError('required') || pagoTarjetaForm.get('numeroTarjeta')?.hasError('pattern')) {
+                                    <mat-error>
+                                        Número de la tarjeta no válido
+                                    </mat-error>
+                                }
+                        </mat-form-field>
+                    
+                        <mat-form-field class="full-width2">
+                            <mat-label>Fecha caducidad</mat-label>
+                            <input matInput type="text" formControlName="fechaCaducidad" name="fechaCaducidad" maxlength="5">
+                                @if (pagoTarjetaForm.get('fechaCaducidad')?.hasError('required') || pagoTarjetaForm.get('fechaCaducidad')?.hasError('pattern')) {
+                                    <mat-error>
+                                        Fecha de caducidad no válida
+                                    </mat-error>
+                                }
+                        </mat-form-field>
+              
+                        <mat-form-field class="full-width2">
+                            <mat-label>CVV</mat-label>
+                            <input matInput type="text" formControlName="cvv" name="cvv" maxlength="3">
+                                @if (pagoTarjetaForm.get('cvv')?.hasError('required') || pagoTarjetaForm.get('cvv')?.hasError('pattern')) {
+                                    <mat-error>
+                                        CVV no válido
+                                    </mat-error>
+                                }
+                        </mat-form-field>
+                    </form>
+                    
+        
+                } @else if (button2.checked == true) {
+                    <form class="prepagoForm" [formGroup]="pagoPrepagoForm">
+                        <mat-form-field class="full-width">
+                            <mat-label>Codigo de la tarjeta</mat-label>
+                            <input matInput type="text" formControlName="codigoTarjeta" name="codigoTarjeta">
+                                @if (pagoPrepagoForm.get('codigoTarjeta')?.hasError('required') || pagoPrepagoForm.get('codigoTarjeta')?.hasError('pattern')) {
+                                    <mat-error>
+                                        Codigo de la tarjeta no válido
+                                    </mat-error>
+                                }
+                        </mat-form-field>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+<div class="botonCompra">
+    <button mat-raised-button color="accent" class="realizarCompra" (click)="realizarcompra()">Realizar compra</button>
+</div>
+</div>

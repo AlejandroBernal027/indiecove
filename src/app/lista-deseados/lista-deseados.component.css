@@ -1,0 +1,240 @@
+#Contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 78%;
+}
+
+.listaHeader {
+    margin-top: 2.5em;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.listaHeader h1 {
+    display: flex;
+    align-items: center;
+    font-size: 39px;
+    font-weight: bold;
+    margin: 0%;
+    font-family: Lora;
+}
+
+.listaDeseadosContenido {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 2em;
+    margin: 2em 0;
+    width: 80%;
+}
+
+.cardContainer {
+    display: flex;
+    width: 100%;
+    height: 160px;
+    box-shadow: 10px 10px 5px #AEAFB0;
+    background-color: #1B6FA7;
+}
+
+.listaDeseadosContenido mat-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #00000000;
+    width: 100%;
+    
+    color: white;
+}
+
+.listaDeseadosContenido mat-card-header {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 45%;
+}
+
+.listaDeseadosContenido mat-card-content {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: 55%;
+}
+
+.listaDeseadosContenido mat-card-title {
+    font-size: 31px;
+}
+
+.cardContainer:hover {
+    box-shadow: 10px 10px 5px 5px #AEAFB0;
+    background-color: #124B71;
+    cursor: pointer;
+}
+
+.listaDeseadosContenido mat-card:hover {
+    background-color: #124B71;
+    cursor: pointer;
+    box-shadow: 10px 10px 5px 5px #AEAFB0;
+}
+
+.listaDeseadosContenido mat-card:hover .mat-mdc-standard-chip, .listaDeseadosContenido .cardContainer:hover .mat-mdc-standard-chip {
+    --mdc-chip-elevated-disabled-container-color: #5CAEE5;
+}
+
+.cardContainer > img {
+    max-width: 150px;
+}
+
+.cardContainer .sale {
+    position: absolute;
+    left: 0.5%;
+    top: -5%
+}
+
+.cardContainer .sale p {
+    position: absolute;
+    margin: 0;
+    top: 35%;
+    left: 15%;
+    font-size: 25px;
+    font-weight: bold;
+    color: #000;
+}
+
+mat-card-header {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+mat-card-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-disabled-label-text-color: #000;
+    --mdc-chip-elevated-disabled-container-color: #92C9EE;
+    --mat-chip-disabled-container-opacity: 1;
+    font-weight: bold;
+}
+
+.addToCarro {
+    margin-right: 5em;
+    padding: 1.75em 0;
+}
+
+
+@media (max-width: 1440px) {
+    mat-card-title {
+        margin-left: 2em;
+    }
+}
+
+@media (max-width: 1024px) {
+    .listaDeseadosContenido mat-card {
+        padding: 0 5em 0 7em;
+    }
+    
+    .layoutResponsive {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+    }
+
+    .listaDeseadosContenido mat-card-header {
+        width: 100%;
+    }
+
+    .listaDeseadosContenido mat-card-title {
+        margin-left: 0;
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 0.5em;
+    }
+
+    .addToCarro {
+        margin: 0;
+    }
+}
+
+@media (max-width:768px) {
+    .listaHeader h1 {
+        font-size: 29px;
+    }
+    
+    .cardContainer .sale p {
+        font-size: 20px;
+    }
+
+    .sale img {
+        width: 60px;
+        height: 90px;
+    }
+    
+    .addToCarro {
+        padding: 1em 0;
+    }
+    
+    .addToCarro img {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width:700px) {
+    .listaDeseadosContenido {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .listaDeseadosContenido .mobileCard {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        width: auto;
+    }
+
+    .sale {
+        position: absolute;
+        right: 5%;
+        top: -3%;
+    }
+
+    .sale p {
+        position: absolute;
+        top: 30%;
+        left: 15%;
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+        width: fit-content;
+    }
+
+    .addToCarro {
+        letter-spacing: normal;
+        padding: 1em 0.5em;
+        margin: 1em;
+    }
+}
+
+@media (max-width: 640px) {
+    .listaDeseadosContenido {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 425px) {
+    .listaHeader h1 {
+        font-size: 25px;
+    }
+
+    .listaDeseadosContenido mat-card-title {
+        font-size: 20px;
+        margin: 0.25em 0;
+    }
+}

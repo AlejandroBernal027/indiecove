@@ -1,0 +1,224 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #E8EAEB;}
+
+
+.mat-mdc-form-field-subscript-wrapper, .mat-mdc-form-field-bottom-align::before {
+    display: none;
+}
+
+.gridViewGames .mdc-evolution-chip-set__chips {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.listViewGames .mdc-evolution-chip-set__chips, .listaDeseadosContenido .mdc-evolution-chip-set__chips {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    width: 40%;
+}
+
+mat-card {
+    --mdc-elevated-card-container-shape: 0px;
+}
+
+.search {
+    --mdc-text-button-container-shape: 0px;
+}
+
+.searchBarInput {
+    --mdc-filled-text-field-container-shape: 0px;
+}
+
+.sliderDinero {
+    --mat-slider-ripple-color: #000;
+    --mat-slider-hover-state-layer-color: rgb(0 0 0 / 5%);
+    --mat-slider-focus-state-layer-color: rgb(0 0 0 / 20%);
+    --mdc-slider-handle-color: #000;
+    --mdc-slider-focus-handle-color: #333;
+    --mdc-slider-hover-handle-color: #000;
+    --mdc-slider-active-track-color: #000;
+    --mdc-slider-inactive-track-color: #000;
+    --mdc-slider-with-tick-marks-inactive-container-color: #000;
+}
+
+.mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
+    width: 100%;
+}
+
+.gridViewGames .mat-mdc-standard-chip .mdc-evolution-chip__text-label {
+    font-size: 12px;
+  }
+
+.innercenter {
+    height: 250px;
+    width: 100%;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-mdc-radio-button.mat-accent {
+    --mdc-radio-selected-focus-icon-color: #000;
+    --mdc-radio-selected-hover-icon-color: #000;
+    --mdc-radio-selected-icon-color: #000;
+    --mdc-radio-selected-pressed-icon-color: #000;
+    --mat-radio-checked-ripple-color: #000;
+}
+
+.mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: #5CAEE5;
+    --mdc-protected-button-label-text-color: black;
+    --mat-protected-button-state-layer-color: black;
+}
+
+.registroForm #mat-input-1, .loginForm #mat-input-1 {
+    font-size: 20px;
+}
+
+.mdc-text-field--filled .mdc-floating-label {
+    --mdc-filled-text-field-label-text-size: 18px;
+}
+
+.mat-mdc-raised-button.mat-accent {
+    --mdc-protected-button-container-color: #DD932A;
+    --mdc-protected-button-label-text-color: black;
+    --mat-protected-button-state-layer-color: black;
+    --mat-protected-button-ripple-color: rgba(0, 0, 0, 0.1);
+}
+
+.mat-mdc-radio-button {
+    --mdc-form-field-label-text-size: 16px;
+}
+
+.mat-mdc-tab-group, .mat-mdc-tab-nav-bar {
+    --mdc-tab-indicator-active-indicator-color: #ffffff;
+    --mat-tab-header-disabled-ripple-color: rgba(255, 255, 255, 0.38);
+    --mat-tab-header-pagination-icon-color: rgb(255, 255, 255);
+    --mat-tab-header-inactive-label-text-color: #C9E4F6;
+    --mat-tab-header-active-label-text-color: #ffffff;
+    --mat-tab-header-active-ripple-color: #ffffff;
+    --mat-tab-header-inactive-ripple-color: #ffffff;
+    --mat-tab-header-inactive-focus-label-text-color: rgba(255, 255, 255, 0.6);
+    --mat-tab-header-inactive-hover-label-text-color: rgba(255, 255, 255, 0.6);
+    --mat-tab-header-active-focus-label-text-color: #ffffff;
+    --mat-tab-header-active-hover-label-text-color: #ffffff;
+    --mat-tab-header-active-focus-indicator-color: #ffffff;
+    --mat-tab-header-active-hover-indicator-color: #ffffff;
+}
+
+#Contenedor .mat-mdc-tab-header {
+    --mat-tab-header-label-text-font: Roboto, sans-serif;
+    --mat-tab-header-label-text-size: 23px;
+    --mat-tab-header-label-text-tracking: normal;
+    --mat-tab-header-label-text-line-height: 36px;
+    --mat-tab-header-label-text-weight: 500;
+}
+#Contenedor .mat-mdc-tab-header {
+    --mdc-secondary-navigation-tab-container-height: 4.5em;
+    background-color: #124B71;
+}
+
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab {
+    flex-grow: 1;
+    width: 50%;
+}
+
+#Contenedor .mat-mdc-tab-body-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: height 500ms cubic-bezier(0.35, 0, 0.25, 1);
+    height: 100%;
+}
+
+#Contenedor .mat-mdc-tab-body.mat-mdc-tab-body-active {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: #5CAEE5;
+    --mdc-filled-button-label-text-color: black;
+    --mat-filled-button-state-layer-color: black;
+    --mat-filled-button-ripple-color: rgba(255, 255, 255, 0.1);
+  }
+
+@media (max-width: 1024px) {
+    .listViewGames .mat-mdc-standard-chip {
+        --mdc-chip-label-text-font: Roboto, sans-serif;
+        --mdc-chip-label-text-line-height: 20px;
+        --mdc-chip-label-text-size: 12px;
+        --mdc-chip-label-text-tracking: 0.0178571429em;
+        --mdc-chip-label-text-weight: 400;
+    }
+}
+
+@media (max-width: 600px) {
+    .mdc-button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-width: 32px;
+        border: none;
+        outline: none;
+        line-height: inherit;
+        user-select: none;
+        overflow: visible;
+        vertical-align: middle;
+        background: rgba(0, 0, 0, 0);
+    }
+
+
+    .mat-mdc-icon-button {
+        border-radius: 50%;
+        flex-shrink: 0;
+        text-align: center;
+        width: var(--mdc-icon-button-state-layer-size, 48px);
+        height: var(--mdc-icon-button-state-layer-size, 48px);
+        padding: 0;
+        font-size: var(--mdc-icon-button-icon-size);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+}
+
+@media (max-width: 425px) {
+    .listaDeseadosContenido .mat-mdc-standard-chip {
+        --mdc-chip-label-text-size: 12px;
+    }
+
+    #Contenedor .mat-mdc-tab {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 375px) {
+    #Contenedor .mat-mdc-tab {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    #Contenedor .mat-mdc-tab {
+        font-size: 18px;
+    }
+
+    #Contenedor .mdc-text-field--filled .mdc-floating-label {
+        font-size: 12px;
+    }
+
+    #Contenedor .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-size: 14px;
+    }
+}

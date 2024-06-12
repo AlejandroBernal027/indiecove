@@ -1,0 +1,160 @@
+mat-toolbar {
+  height: 14%;
+  background-color: #124B71;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 46%;
+  width: 50%;
+}
+
+.opcion {
+  padding: 1em;
+}
+
+.tinyImg {
+  width: 60px;
+  height: 60px;
+}
+
+.optionText {
+  display: inline;
+  margin-left: 1em;
+}
+
+form {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  height: 100%;
+}
+
+.search {
+  background-color: #F0F1F1;
+  height: 100%;
+  align-items: center;
+}
+
+.userOptions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.userOptions img {
+  width: 36px;
+  height: 36px;
+}
+
+:host ::ng-deep .mat-badge-content {
+  left: 85% !important;
+  color: black;
+  background-color: #FFEA2D;
+  z-index: 1;
+}
+
+/* Responsive */
+
+@media (max-width: 1440px) {
+  
+  .search {
+    background-color: #F0F1F1;
+    align-items: center;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .goHome {
+    height: 80px;
+    width: 80px;
+  }
+
+  form {
+    display: flex;
+    justify-content: flex-end;
+    width: 75%;
+  }
+
+  .search {
+    width: 32px!important;
+    min-width: unset!important;
+  }
+
+  .search img{
+    width: 24px;
+    height: 24px;
+  }
+
+  .userOptions img {
+    width: 30px;
+    height: 30px;
+  }
+
+  :host ::ng-deep .mat-badge-content {
+    left: 80% !important;
+  }
+  
+}
+
+@media (max-width: 550px) {
+  mat-toolbar {
+    flex-direction: column;
+    height: 25%;
+  }
+
+  mat-form-field {
+    height: 60%;
+  }
+
+  .topPart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+    padding-top: 1em;
+  }
+
+  .userOptions {
+    height: fit-content;
+  }
+
+  .searchBar {
+    justify-content: center;
+    height: 50%;
+    width: 85%;
+  }
+
+  .search {
+    width: 64px!important;
+    min-width: unset!important;
+    height: 60%;
+  }
+}
+
+@media (max-height: 800px) {
+  .goHome {
+    width: 80px;
+    height: 80px;
+  }
+
+  .userOptions img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .search img{
+    width: 24px;
+    height: 24px;
+  }
+}

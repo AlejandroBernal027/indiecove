@@ -1,0 +1,75 @@
+#Contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 78%;
+}
+
+h1 {
+    width: 75%;
+    font-size: 39px;
+    margin: 1.5em 0;
+    font-weight: bold;
+    font-family: Lora;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    height: 50%;
+}
+
+.full-width {
+    width: 60%;
+}
+
+.fuller-width {
+    width: 100%;
+}
+
+.endForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.endForm p {
+    font-size: 16px;
+}
+
+.goRegistro, .contrsenaOlvidada {
+    color: #1B6FA7;
+    cursor: pointer;
+}
+
+.contrsenaOlvidada {
+    margin-top: 4px;
+}
+
+.iniciarSesion {
+    font-size: 22px;
+    letter-spacing: normal;
+    padding: 1em;
+}
+
+@media (max-width: 768px) {
+    .full-width {
+        width: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+    .full-width {
+        width: 100%;
+    }
+
+    h1 {
+        width: 75%;
+        font-size: 29px;
+        margin: 3em 0 0 0;
+        text-align: center;
+    }
+}

@@ -1,0 +1,27 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    background-color: #124B71;
+    height: 8%;
+    color: white;
+}
+
+@media (max-width: 630px) {
+    .text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 435px) {
+    .text {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .text {
+        font-size: 8px;
+    }
+}

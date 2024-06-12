@@ -1,0 +1,51 @@
+.datosVert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0;
+    background-color: #E8EAEB;
+}
+
+.datosVert h1 {
+    font-weight: bold;
+}
+
+.facturacionForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datosPago {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 2em 0;
+}
+
+.PagoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+mat-form-field {
+    margin-bottom: 1em;
+}
+
+mat-radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.datosTarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    letter-spacing: normal;
+    font-size: 20px;
+}

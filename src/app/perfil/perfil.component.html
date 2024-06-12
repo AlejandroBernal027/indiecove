@@ -1,0 +1,86 @@
+<div id="Contenedor">
+
+    <div class="perfil">
+        <img [src]="foto_perfil" alt="Foto de perfil">
+        <div class="informacionUsuario">
+            <span>
+                <h1>{{usuario}}</h1>
+                <img matTooltip="Editar datos" matTooltipPosition="above" src="../../assets/img/Iconos/BigEditIcon.png" alt="" (click)="openDialog('0', '0')">
+            </span>
+            <span>
+                <h2>{{nombre}} {{apellidos}}</h2>
+            </span>
+            <span>
+                <h2>{{email}}</h2>
+            </span>
+            <span (click)="logout()">
+                <h3 class="logOut">Cerrar sesión</h3>
+            </span>
+        </div>
+    </div>
+
+    <div class="biblioteca">
+        @if (rol == "jugador" || rol == "desarrollador"){
+            
+            @if (rol == "jugador"){
+                <h1>Biblioteca</h1>
+                <div class="juegos">
+                    @for (juego of JuegosList; track $index) {
+                        <div class="juego" [routerLink]="['/detallesJuego', juego.idJuego]">
+                            <img [src]="juego.Img_principal" [alt]="juego.Nombre" class="imgJuego">
+                            <mat-card>
+                                <mat-card-content ngClass="changeLayout == true ? 'vertical'">
+                                    <p class="name">
+                                        {{juego.Nombre}}
+                                    </p>
+                                    
+                                    <a [href]="juego.Img_principal" download> <!-- Se le puede pasar un base64 para que lo descargue -->
+                                        <button mat-raised-button color="accent" class="descargar">
+                                            Descargar
+                                        </button>
+                                    </a>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    }
+                    
+                </div>
+            } @else if (rol == "desarrollador") {
+                <h1>Juegos publicados</h1>
+                <div class="juegos">
+                    @for (juego of JuegosList; track $index) {
+                        <div class="juego" [routerLink]="['/detallesJuego', juego.idJuego]">
+                            <img [src]="juego.Img_principal" [alt]="juego.Nombre" class="imgJuego">
+                            <mat-card>
+                                <mat-card-content ngClass="changeLayout == true ? 'vertical'">
+                                    <p class="name">
+                                        {{juego.Nombre}}
+                                    </p>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    }
+                    
+                </div>
+            }
+        } @else if (rol == "administrador") {
+            <h1>Lista de usuarios</h1>
+            <div class="juegos">
+                @for (usuario of UserList; track $index) {
+                    <div class="user">
+                        <img [src]="!usuario.Foto_perfil ? '../../assets/img/Iconos/MainFotoPerfil.png' : usuario.Foto_perfil" [alt]="usuario.Nombre" class="imgJuego">
+                        <mat-card>
+                            <mat-card-content ngClass="changeLayout == true ? 'vertical'">
+                                <p class="name">
+                                    {{usuario.Nombre_usuario}}
+                                </p>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                }
+                
+            </div>
+        }
+    </div>
+
+</div>

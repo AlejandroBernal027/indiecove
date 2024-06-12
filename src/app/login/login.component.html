@@ -1,0 +1,36 @@
+<div id="Contenedor">
+    <h1>Inicio de sesión</h1>
+
+    <form class="loginForm" [formGroup]="loginForm">
+        
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" name="email">
+                      @if (loginForm.get('email')?.hasError('required')) {
+                          <mat-error>
+                              Email no válido
+                          </mat-error>
+                      }
+        </mat-form-field>
+          
+        <div class="full-width">
+            <mat-form-field class="fuller-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="contrasena" name="contrasena">
+                      @if (loginForm.get('contrasena')?.hasError('required')) {
+                          <mat-error>
+                              Contraseña no válida
+                          </mat-error>
+                      }
+            </mat-form-field>
+            <p class="contrsenaOlvidada" (click)="openDialog('0', '0')">¿Se te ha olvidado la contraseña?</p>
+        </div>
+
+    </form>
+
+    <div class="endForm">
+        <p>¿No tienes cuenta? <span class="goRegistro" routerLink="/registro">Registrate aquí</span></p>
+        <button mat-raised-button color="primary" class="iniciarSesion" (click)='sendLogin()'>Iniciar sesión</button>
+        
+    </div>
+</div>

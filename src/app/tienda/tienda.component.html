@@ -1,0 +1,327 @@
+<div id="main">
+    
+    @defer {
+
+        @if (changeLayout == false) {
+            <div id="filtros">
+                <h3 class="sticky">Filtros</h3>
+                <div class="mainOptions">
+                    <mat-radio-group class="filtrosRadio" aria-label="Select an option">
+                        <div class="radioOption">
+                            <mat-radio-button #button1 checked value="1" (change)="filtrar()"></mat-radio-button>
+                            <p>Populares</p>
+                        </div>
+                        <div class="radioOption">
+                            <mat-radio-button #button2 value="2" (change)="filtrar()"></mat-radio-button>
+                            <p>Novedades</p>
+                        </div>
+                        <div class="radioOption">
+                            <mat-radio-button #button3 value="3" (change)="filtrar()"></mat-radio-button>
+                            <p>Mejores valorados</p>
+                        </div>
+                        <div class="radioOption">
+                            <mat-radio-button #button4 value="4" (change)="filtrar()"></mat-radio-button>
+                            <p>En rebajas</p>
+                        </div>
+                    </mat-radio-group>
+                    
+                    <div class="slider">
+                        <mat-slider class="sliderDinero" #slider [min]="minSlider" [max]="maxSlider">
+                            <input [value]="minSlider" matSliderStartThumb #sliderStart (valueChange)="sliderValues(sliderStart.value, sliderEnd.value)">
+                            <input [value]="maxSlider" matSliderEndThumb #sliderEnd (valueChange)="sliderValues(sliderStart.value, sliderEnd.value)">
+                        </mat-slider>
+                        <span>
+                            <p>{{sliderStart.value}}€</p>
+                            <p>{{sliderEnd.value}}€</p>
+                        </span>
+                    </div>
+                
+                    <div class="secondaryOptions">
+                        <mat-form-field class="select">
+                            <mat-label>Género</mat-label>
+                            <mat-select [formControl]="genero" multiple #generoSelect (selectionChange)="filtrar()">
+                                <mat-select-trigger>
+                                    {{genero.value?.[0] || ''}}
+                                    @if ((genero.value?.length || 0) > 1) {
+                                    <span class="example-additional-selection">
+                                        (+{{(genero.value?.length || 0) - 1}} {{genero.value?.length === 2 ? 'más' : 'más'}})
+                                    </span>
+                                    }
+                                </mat-select-trigger>
+                                @for (genero of generoList; track genero) {
+                                    <mat-option [value]="genero">{{genero}}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    
+                        <mat-form-field class="select">
+                            <mat-label>Estilo</mat-label>
+                            <mat-select [formControl]="estilo" multiple #estiloSelect (selectionChange)="filtrar()">
+                                <mat-select-trigger>
+                                    {{estilo.value?.[0] || ''}}
+                                    @if ((estilo.value?.length || 0) > 1) {
+                                    <span class="example-additional-selection">
+                                        (+{{(estilo.value?.length || 0) - 1}} {{estilo.value?.length === 2 ? 'más' : 'más'}})
+                                    </span>
+                                    }
+                                </mat-select-trigger>
+                                @for (estilo of estiloList; track estilo) {
+                                    <mat-option [value]="estilo">{{estilo}}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    
+                        <mat-form-field class="select">
+                            <mat-label>Palabras clave</mat-label>
+                            <mat-select [formControl]="palabrasClave" multiple #claveSelect (selectionChange)="filtrar()">
+                                <mat-select-trigger>
+                                    {{palabrasClave.value?.[0] || ''}}
+                                    @if ((palabrasClave.value?.length || 0) > 1) {
+                                    <span class="example-additional-selection">
+                                        (+{{(palabrasClave.value?.length || 0) - 1}} {{palabrasClave.value?.length === 2 ? 'más' : 'más'}})
+                                    </span>
+                                    }
+                                </mat-select-trigger>
+                                @for (palabrasClave of palabrasClaveList; track palabrasClave) {
+                                    <mat-option [value]="palabrasClave">{{palabrasClave}}</mat-option>
+                                }
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div id="mainTienda">
+                <div class="header">
+                    <h2>Tienda</h2>
+        
+                    <div class="vista">
+                        <p>Vista</p>
+        
+                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup">
+                          <mat-button-toggle value="grid" checked><img src="../../assets/img/Iconos/GridViewIcon.png" alt="gridView"></mat-button-toggle>
+                          <mat-button-toggle value="list"><img src="../../assets/img/Iconos/ListViewIcon.png" alt="listView"></mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </div>
+                
+                @if (group.value == "grid") {
+                    <div class="gridViewGames">
+                        @for (game of tableData; track $index) {
+                            @if (game.Nombre != "relleno") {
+                                <mat-card class="example-card" [routerLink]="['/detallesJuego', game.idJuego]">
+                                    <img [src]="game.Img_principal" [alt]="game.Nombre" class="gameImg">
+                                    @if (game.Rebaja > 0) {
+                                        <div class="sale">
+                                            <img src="../../assets/img/Iconos/SaleIcon.png">
+                                            <p>-{{game.Rebaja}}%</p>
+                                        </div>
+                                    }
+                                    <mat-card-header>
+                                        @if (game.Nombre.length > 20) {
+                                            <mat-card-title><p class="smallTitle">{{game.Nombre}}</p></mat-card-title>
+                                            
+                                        } @else {
+                                            <mat-card-title>{{game.Nombre}}</mat-card-title>
+                                        }
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <div class="precio">
+                                                <h2>{{game.Precio}} €</h2>
+                                        </div>
+                                      <mat-chip-listbox>
+                                        @for (tag of game.Etiquetas.split(","); track $index) {
+                                          <mat-chip disabled>{{tag}}</mat-chip>
+                                        }
+                                      </mat-chip-listbox>
+                                    </mat-card-content>
+                                </mat-card>
+                            } @else {
+                                <div class="relleno-card"></div>
+                            }
+                        }
+                    </div>
+                } @else if (group.value == "list") {
+                    <div class="listViewGames">
+                        @for (game of tableData; track $index) {
+                            @if (game.Nombre != "relleno"){
+                                <div class="cardContainer" [routerLink]="['/detallesJuego', game.idJuego]">
+                                    <img mat-card-image [src]="game.Img_principal" [alt]="game.Nombre">
+                                    <mat-card>
+                                        @if (game.Rebaja > 0) {
+                                            <div class="sale">
+                                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                                <p>-{{game.Rebaja}}%</p>
+                                            </div>
+                                        }
+                                        <mat-card-header>
+                                            <mat-card-title>{{game.Nombre}}</mat-card-title>
+                                            <div class="precioList">
+                                                <h2>{{game.Precio}}</h2>
+                                            </div>
+                                        </mat-card-header>
+                                        <span class="example-spacer"></span>
+                                        <mat-card-content>
+                                            <mat-chip-listbox>
+                                            @for (tag of game.Etiquetas.split(","); track $index) {
+                                                <mat-chip disabled>{{tag}}</mat-chip>
+                                            }
+                                            </mat-chip-listbox>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+            } @else {
+                <mat-drawer-container class="example-container" hasBackdrop="True">
+                    <mat-drawer #drawer mode="over">
+                        <div id="filtros">
+                            <h3 class="sticky">Filtros</h3>
+                            <div class="mainOptions">
+                                <mat-radio-group class="filtrosRadio" aria-label="Select an option">
+                                    <div class="radioOption">
+                                        <mat-radio-button #button1 checked value="1"></mat-radio-button>
+                                        <p>Populares</p>
+                                    </div>
+                                    <div class="radioOption">
+                                        <mat-radio-button #button2 value="2"></mat-radio-button>
+                                        <p>Novedades</p>
+                                    </div>
+                                    <div class="radioOption">
+                                        <mat-radio-button #button3 value="3"></mat-radio-button>
+                                        <p>Mejores valorados</p>
+                                    </div>
+                                    <div class="radioOption">
+                                        <mat-radio-button #button4 value="4"></mat-radio-button>
+                                        <p>En rebajas</p>
+                                    </div>
+                                </mat-radio-group>
+                                
+                                <div class="slider">
+                                    <mat-slider class="sliderDinero" #slider [min]="minSlider" [max]="maxSlider">
+                                        <input [value]="minSlider" matSliderStartThumb #sliderStart (valueChange)="sliderValues(sliderStart.value, sliderEnd.value)">
+                                        <input [value]="maxSlider" matSliderEndThumb #sliderEnd (valueChange)="sliderValues(sliderStart.value, sliderEnd.value)">
+                                    </mat-slider>
+                                    <span>
+                                        <p>{{sliderStart.value}}€</p>
+                                        <p>{{sliderEnd.value}}€</p>
+                                    </span>
+                                </div>
+                            
+                                <div class="secondaryOptions">
+                                    <mat-form-field class="select">
+                                        <mat-label>Género</mat-label>
+                                        <mat-select [formControl]="genero" multiple #generoSelect (selectionChange)="filtrar()">
+                                            <mat-select-trigger>
+                                                {{genero.value?.[0] || ''}}
+                                                @if ((genero.value?.length || 0) > 1) {
+                                                <span class="example-additional-selection">
+                                                    (+{{(genero.value?.length || 0) - 1}} {{genero.value?.length === 2 ? 'más' : 'más'}})
+                                                </span>
+                                                }
+                                            </mat-select-trigger>
+                                            @for (genero of generoList; track genero) {
+                                                <mat-option [value]="genero">{{genero}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-form-field class="select">
+                                        <mat-label>Estilo</mat-label>
+                                        <mat-select [formControl]="estilo" multiple #estiloSelect (selectionChange)="filtrar()">
+                                            <mat-select-trigger>
+                                                {{estilo.value?.[0] || ''}}
+                                                @if ((estilo.value?.length || 0) > 1) {
+                                                <span class="example-additional-selection">
+                                                    (+{{(estilo.value?.length || 0) - 1}} {{estilo.value?.length === 2 ? 'más' : 'más'}})
+                                                </span>
+                                                }
+                                            </mat-select-trigger>
+                                            @for (estilo of estiloList; track estilo) {
+                                                <mat-option [value]="estilo">{{estilo}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-form-field class="select">
+                                        <mat-label>Palabras clave</mat-label>
+                                        <mat-select [formControl]="palabrasClave" multiple #claveSelect (selectionChange)="filtrar()">
+                                            <mat-select-trigger>
+                                                {{palabrasClave.value?.[0] || ''}}
+                                                @if ((palabrasClave.value?.length || 0) > 1) {
+                                                <span class="example-additional-selection">
+                                                    (+{{(palabrasClave.value?.length || 0) - 1}} {{palabrasClave.value?.length === 2 ? 'más' : 'más'}})
+                                                </span>
+                                                }
+                                            </mat-select-trigger>
+                                            @for (palabrasClave of palabrasClaveList; track palabrasClave) {
+                                                <mat-option [value]="palabrasClave">{{palabrasClave}}</mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+    
+                            @if (drawer.opened == true){
+                                <button class="openFiltros" mat-raised-button color="accent" (click)="drawer.toggle()">Cerrar filtros</button>
+                            }
+                        </div>
+                    </mat-drawer>
+                    <mat-drawer-content>
+                      <div id="mainTienda">
+                        <div class="header">
+                            <h2>Tienda</h2>
+                
+                            @if (drawer.opened == false){
+                                <button class="openFiltros" mat-raised-button color="accent" (click)="drawer.toggle()">Filtros</button>
+                            }
+                        </div>
+                        
+                        
+                            <div class="gridViewGames">
+                                @for (game of tableData; track $index) {
+                                    @if (game.Nombre != "relleno") {
+                                        <mat-card class="example-card" [routerLink]="['/detallesJuego', game.idJuego]">
+                                            <img [src]="game.Img_principal" [alt]="game.Nombre" class="gameImg">
+                                            @if (game.Rebaja > 0) {
+                                                <div class="sale">
+                                                    <img src="../../assets/img/Iconos/SaleIcon.png">
+                                                    <p>-{{game.Rebaja}}%</p>
+                                                </div>
+                                            }
+                                            <mat-card-header>
+                                                @if (game.Nombre.length > 20) {
+                                                    <mat-card-title><p class="smallTitle">{{game.Nombre}}</p></mat-card-title>
+                                                    
+                                                } @else {
+                                                    <mat-card-title>{{game.Nombre}}</mat-card-title>
+                                                }
+                                            </mat-card-header>
+                                            <mat-card-content>
+                                                <div class="precio">
+                                                    <h2>{{game.Precio}}</h2>
+                                                </div>
+                                              <mat-chip-listbox>
+                                                @for (tag of game.Etiquetas.split(","); track $index) {
+                                                  <mat-chip disabled>{{tag}}</mat-chip>
+                                                }
+                                              </mat-chip-listbox>
+                                            </mat-card-content>
+                                        </mat-card>
+                                    } @else {
+                                        <div class="relleno-card"></div>
+                                    }
+                                }
+                            </div>
+                    
+                    </div>
+                    </mat-drawer-content>
+                </mat-drawer-container>
+            }
+    } @placeholder (minimum 2s) {
+        <mat-spinner></mat-spinner>
+    }
+
+</div>

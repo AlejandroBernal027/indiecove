@@ -1,0 +1,189 @@
+<div class="upperPart">
+
+    @if (changeLayout == false) {
+        <div class="gridListImagenes">
+            <mat-grid-list cols="5" rowHeight="3:2" gutterSize="10px">
+                <mat-grid-tile rowspan="4" colspan="5">
+                    <img [src]="srcMainImg" alt="imagenPrincipal">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_principal" (click)="changeMainImgSrc(juego.Img_principal)" alt="imagenSel1">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec1" (click)="changeMainImgSrc(juego.Img_sec1)" alt="imagenSel2">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec2" (click)="changeMainImgSrc(juego.Img_sec2)" alt="imagenSel3">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec3" (click)="changeMainImgSrc(juego.Img_sec3)" alt="imagenSel4">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec4" (click)="changeMainImgSrc(juego.Img_sec4)" alt="imagenSel5">
+                </mat-grid-tile>
+              </mat-grid-list>
+        </div>
+        
+        <div class="textPrincipal">
+            <div class="upper">
+                <h1>{{juego.Nombre}}</h1>
+                <span>
+                    <h2>Desarrollador: {{juego.Nombre_Desarrollador}}</h2>
+                </span>
+            </div>
+            <p>{{juego.Sinopsis.split("\\")[0]}}</p>
+            <button mat-flat-button color="accent" (click)="addCarrito(juego.idJuego)">Añadir al carrito</button>
+            <button mat-flat-button color="primary" class="addListaDeseados" (click)="addListaDeseados()">Añadir a la lista de deseados</button>
+        </div>
+    } @else {
+        <div class="textPrincipal">
+            <div class="upper">
+                <h1>{{juego.Nombre}}</h1>
+                <span>
+                    <h2>Desarrollador: {{juego.Nombre_Desarrollador}}</h2>
+                </span>
+            </div>
+            <p>{{juego.Sinopsis.split("\\")[0]}}</p>
+            <button mat-flat-button color="accent" (click)="addCarrito(juego.idJuego)">Añadir al carrito</button>
+            <button mat-flat-button color="primary" class="addListaDeseados" (click)="addListaDeseados()">Añadir a la lista de deseados</button>
+        </div>
+
+        <div class="gridListImagenes">
+            <mat-grid-list cols="5" rowHeight="3:2" gutterSize="10px">
+                <mat-grid-tile rowspan="4" colspan="5">
+                    <img [src]="srcMainImg" alt="imagenPrincipal">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_principal" (click)="changeMainImgSrc(juego.Img_principal)" alt="imagenSel1">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec1" (click)="changeMainImgSrc(juego.Img_sec1)" alt="imagenSel2">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec2" (click)="changeMainImgSrc(juego.Img_sec2)" alt="imagenSel3">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec3" (click)="changeMainImgSrc(juego.Img_sec3)" alt="imagenSel4">
+                </mat-grid-tile>
+                <mat-grid-tile class="imagenesSeleccion">
+                    <img [src]="juego.Img_sec4" (click)="changeMainImgSrc(juego.Img_sec4)" alt="imagenSel5">
+                </mat-grid-tile>
+              </mat-grid-list>
+        </div>
+    } 
+
+</div>
+
+<div class="lowerPart">
+
+    <div class="extraInfo">
+        @for (paragraph of juego.Sinopsis.split("\\")[1].split("·"); track $index) {
+            <p>{{paragraph}}</p>
+        }
+    </div>
+    
+    @if (rol == "jugador" && haValorado == false){
+        <div class="valoracionForm">
+            <form [formGroup]="valoracionForm">
+            <span class="headerValoracionForm">
+                <h2 class="dejarValoracion">Deja tu valoración</h2>
+                <span class="example-spacer"></span>
+                <mat-form-field>
+                    <mat-label>Puntuación</mat-label>
+                    <mat-select formControlName="puntuacion" name="puntuacion">
+                        @for (puntuacion of valoracionPuntuacion; track $index) {
+                            <mat-option [value]="puntuacion.charAt(0)">{{puntuacion}}</mat-option>
+                        }
+                        @if (valoracionForm.get('puntuacion')?.hasError('required')) {
+                            <mat-error>
+                              Puntuacion no válida
+                            </mat-error>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </span>
+            <div class="footerValoracionForm">
+                <mat-form-field class="example-full-width">
+                    <textarea #textarea matInput placeholder="" rows="7"></textarea>
+                    @if (valoracionForm.get('comentario')?.hasError('required')) {
+                        <mat-error>
+                            Comentario no válido
+                        </mat-error>
+                    }
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="mandarValoracion()">Dejar valoración</button>
+            </div>
+    
+            </form>
+        </div>
+    }
+
+    <div class="valoraciones">
+        <h1>Valoraciones</h1>
+        @for (valoracion of valoraciones; track $index) {
+            <div class="valoracion">
+                @if (mobileLayout == false) {
+                    <img class="userIcon" src="../../assets/img/Iconos/UserValoracion.png">
+                    <div class="contenidoValoracion">
+                        <span class="headerValoracion">
+                            <p>{{valoracion.Nombre_usuario}}</p>
+                            @switch (valoracion.Puntuacion.toString()) {
+                                @case ("0") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                                }
+                                @case ("1") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                                }
+                                @case ("2") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                                }
+                                @case ("3") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                                }
+                                @case ("4") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                                }
+                                @case ("5") {
+                                    <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"></p>
+                                }
+                            }
+                        </span>
+                        <span class="comentarioValoracion">
+                            <p>{{valoracion.Comentario}}</p>
+                        </span>
+                    </div>
+                } @else {
+                    <span class="headerValoracion">
+                        <p>{{valoracion.Nombre_usuario}}</p>
+                        @switch (valoracion.Puntuacion) {
+                            @case ("0") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                            }
+                            @case ("1") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                            }
+                            @case ("2") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                            }
+                            @case ("3") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                            }
+                            @case ("4") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioEmpty.png"></p>
+                            }
+                            @case ("5") {
+                                <p><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"><img src="../../assets/img/Iconos/ValoracionComentarioFull.png"></p>
+                            }
+                        }
+                    </span>
+                    <div class="contenidoValoracion">
+                        <img class="userIcon" src="../../assets/img/Iconos/UserValoracion.png">
+                        <span class="comentarioValoracion">
+                            <p>{{valoracion.Comentario}}</p>
+                        </span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

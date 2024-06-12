@@ -1,0 +1,100 @@
+<mat-toolbar>
+
+    @if (changeLayout == false) {
+        <img class="goHome" src="../../assets/img/IndieCove 2.png" routerLink="/home">
+            <form class="searchBar">
+                <mat-form-field class="searchBarInput">
+                  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Buscar juegos...">
+                  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    @for (option of filteredOptions | async; track option) {
+                      <mat-option class="opcion" [routerLink]="['/detallesJuego', option.idJuego]" [value]="option.Nombre">
+                        <img class="tinyImg" [src]="option.Img_principal">
+                        <p class="optionText">{{option.Nombre}}</p>
+                      </mat-option>
+                    }
+                  </mat-autocomplete>
+                </mat-form-field>    
+                <button class="search" mat-button color="primary" routerLink="/tienda">
+                    <img src="../../assets/img/Iconos/searchIcon.png">
+                </button>
+            </form>
+        @if(rol == "jugador"){
+            <div class="userOptions">
+                <button mat-button color="primary" [matBadge]="cantidadCarrito.length > 9 ? '9+' : cantidadCarrito.length" routerLink="/carrito">
+                    <img src="../../assets/img/Iconos/carritoIcon.png">
+                </button>
+                <button mat-button color="primary" routerLink="/listaDeseados">
+                    <img src="../../assets/img/Iconos/listaIcon.png">
+                </button>
+                <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                    <img src="../../assets/img/Iconos/UserIcon.png">
+                </button>
+            </div>
+        } @else if (rol == "desarrollador") {
+            <div>
+                <button mat-raised-button color="accent" routerLink="/publicarJuego" class="publicarJuego">
+                    Publicar juego
+                </button>
+                <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                    <img src="../../assets/img/Iconos/UserIcon.png">
+                </button>
+            </div>
+        } @else {
+            <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                <img src="../../assets/img/Iconos/UserIcon.png">
+            </button>
+        }
+    } @else {
+        <div class="topPart">
+            <img class="goHome" src="../../assets/img/IndieCove 1.png" routerLink="/home">
+
+            @if(rol == "jugador" || rol === null){
+                <div class="userOptions">
+                    <button mat-button color="primary" [matBadge]="cantidadCarrito.length > 9 ? '9+' : cantidadCarrito.length" routerLink="/carrito">
+                        <img src="../../assets/img/Iconos/carritoIcon.png">
+                    </button>
+                    <button mat-button color="primary" routerLink="/listaDeseados">
+                        <img src="../../assets/img/Iconos/listaIcon.png">
+                    </button>
+                    <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                        <img src="../../assets/img/Iconos/UserIcon.png">
+                    </button>
+                </div>
+            } @else if (rol == "desarrollador") {
+                <div>
+                    <button mat-raised-button color="accent" routerLink="/publicarJuego" class="publicarJuegoSmall">
+                        Publicar juego
+                    </button>
+                    <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                        <img src="../../assets/img/Iconos/UserIcon.png">
+                    </button>
+                </div>
+            } @else if (rol == "administrador") {
+                <button mat-button color="primary" [routerLink]="idUser === null ? '/registro' : '/perfil'">
+                    <img src="../../assets/img/Iconos/UserIcon.png">
+                </button>
+            }
+        </div>
+
+        
+        <form class="searchBar">
+            <mat-form-field class="searchBarInput">
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Buscar juegos...">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  @for (option of filteredOptions | async; track option) {
+                    <mat-option class="opcion" routerLink="/detallesJuego" [value]="option.Nombre">
+                      <img class="tinyImg" [src]="option.Img_principal">
+                      <p class="optionText">{{option.Nombre}}</p>
+                    </mat-option>
+                  }
+                </mat-autocomplete>
+              </mat-form-field>     
+            <button class="search" mat-button color="primary" routerLink="/tienda">
+                <img src="../../assets/img/Iconos/searchIcon.png">
+            </button>
+        </form>
+        
+    }
+
+
+</mat-toolbar>

@@ -1,0 +1,243 @@
+<div id="contenedor">
+    <div id="carrusel">
+    
+        <div class="imagenes">
+            <img [src]="srcImgIzq" class="leftImg" [routerLink]="['/detallesJuego', idImgIzq]">
+            <img src="../../assets/img/carruselHome/CarruselIcono.png" (click)="changePrevImg()" class="carruselLeft">
+            <img [src]="srcImgCen" class="centerImg" [routerLink]="['/detallesJuego', idImgCen]">
+            <img src="../../assets/img/carruselHome/CarruselIcono.png" (click)="changeNextImg()" class="carruselRight">
+            <img [src]="srcImgDer" class="rightImg" [routerLink]="['/detallesJuego', idImgDer]">
+        </div>
+        <div class="imgSelectors">
+            @for (radio of radioCheck; track $index) {
+                @if (radioCheck[$index] == true) {
+                    <img src="../../assets/img/Iconos/IconsRadioSelected.png">
+                } @else {
+                    <img src="../../assets/img/Iconos/IconsRadioUnselected.png" (click)="changeImgByValue($index)" class="radioClick">
+                }
+            }
+        </div>
+    
+    </div>
+    
+    <div id="novedades">
+    
+        <div class="titulo">
+            <img src="../../assets/img/Iconos/IconsNovedades.png">
+            <h2>Novedades</h2>
+            <a routerLink="/tienda">Ver más</a>
+        </div>
+    
+        <div class="novedadesJuegos">
+            @for (juego of novedadesList; track $index) {
+                @if (lessCards == false && evenLessCard == false && mobileCards == false) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                      <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                      @if (juego.rebaja > 0) {
+                          <div class="sale">
+                              <img src="../../assets/img/Iconos/SaleIcon.png">
+                              <p>-{{juego.rebaja}}%</p>
+                          </div>
+                      }
+                      <mat-card-content>
+                          <p>
+                            {{juego.nombre}}
+                          </p>
+                      </mat-card-content>
+                    </mat-card>
+                } @else if (mobileCards == true && $index <= 3) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                } @else if (evenLessCard == true && $index <= 5){
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                } @else if (lessCards == true && $index <= 8) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                }
+            }
+    
+        </div>
+    </div>
+
+    <div id="populares">
+    
+        <div class="titulo">
+            <img src="../../assets/img/Iconos/HotIcon.png">
+            <h2>Populares</h2>
+            <a routerLink="/tienda">Ver más</a>
+        </div>
+    
+        <div class="popularesJuegos">
+            @for (juego of popularesList; track $index) {
+                @if (lessCards == false && evenLessCard == false && mobileCards == false) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                      <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                      @if (juego.rebaja > 0) {
+                          <div class="sale">
+                              <img src="../../assets/img/Iconos/SaleIcon.png">
+                              <p>-{{juego.rebaja}}%</p>
+                          </div>
+                      }
+                      <mat-card-content>
+                          <p>
+                            {{juego.nombre}}
+                          </p>
+                      </mat-card-content>
+                    </mat-card>
+                } @else if (mobileCards == true && $index <= 3) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                } @else if (evenLessCard == true && $index <= 5){
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                } @else if (lessCards == true && $index <= 8) {
+                    <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgJuego" [src]="juego.img" [alt]="juego.nombre">
+                        @if (juego.rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{juego.rebaja}}%</p>
+                            </div>
+                        }
+                        <mat-card-content>
+                            <p>
+                              {{juego.nombre}}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                }
+            }
+
+        </div>
+    </div>
+
+    <div id="rebajas">
+    
+        <div class="titulo">
+            <img src="../../assets/img/Iconos/RebajaIcons.png">
+            <h2>En rebajas</h2>
+            <a routerLink="/tienda">Ver más</a>
+        </div>
+    
+        <div class="rebajasJuegos">
+            @for (juego of rebajasList; track $index) {
+                <mat-card class="example-card" [routerLink]="['/detallesJuego', juego.id]">
+                    <img mat-card-image class="imgRebaja" [src]="juego.img" [alt]="juego.nombre">
+                    <div class="sale">
+                        <img src="../../assets/img/Iconos/SaleIcon.png">
+                        <p>-{{juego.rebaja}}%</p>
+                    </div>
+                    <mat-card-content>
+                        <p>
+                            {{juego.nombre}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            }
+    
+        </div>
+    </div>
+
+    <div id="eleccionJugadores">
+
+        <div class="titulo">
+            <img src="../../assets/img/Iconos/PlayerChoiceIcons.png">
+            <h2>Elección de los jugadores</h2>
+        </div>
+        
+        <div class="eleccionJuegos">
+            @if (mobileCards == false) {
+                @for (juego of playerChoiceList; track $index) {
+                    <div class="cardEleccion" [routerLink]="['/detallesJuego', juego.id]">
+                        <img [src]="juego.img">
+                        <div class="descripcionJuego">
+                            <h3>{{juego.nombre}}</h3>
+                            <p>{{juego.resumen}}</p>
+                            <p>Etiquetas: {{juego.etiquetas}}</p>
+                            <span>
+                                <h4>Puntuación media: {{juego.puntuacionMedia}}</h4>
+                                <img src="../../assets/img/Iconos/ValoracionIcon.png">
+                            </span>
+                        </div>
+                    </div>
+                }
+            } @else {
+                @for (juego of playerChoiceList; track $index) {
+                    <mat-card class="cardEleccionVertical" [routerLink]="['/detallesJuego', juego.id]">
+                        <img mat-card-image class="imgRebaja" [src]="juego.img" [alt]="juego.nombre">
+                        <mat-card-content class="descripcionJuego">
+                            <h3>{{juego.nombre}}</h3>
+                            <p>Etiquetas: {{juego.etiquetas}}</p>
+                            <span>
+                                <h4>Puntuación media: {{juego.puntuacionMedia}}</h4>
+                                <img src="../../assets/img/Iconos/ValoracionIcon.png">
+                            </span>
+                        </mat-card-content>
+                    </mat-card>
+                }
+            }
+    
+        </div>
+    </div>
+</div>

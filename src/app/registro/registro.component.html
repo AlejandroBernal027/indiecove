@@ -1,0 +1,156 @@
+<div id="Contenedor">
+    <h1>Registro</h1>
+
+    @if (changeLayout == false) {
+        <form class="registroForm" [formGroup]="registroForm">
+
+          <div class="doubleInput">
+              
+              <mat-form-field class="full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" formControlName="nombre" name="nombre">
+                      @if (registroForm.get('nombre')?.hasError('required')) {
+                          <mat-error>
+                              Nombre no válido
+                          </mat-error>
+                      }
+              </mat-form-field>
+            
+              <mat-form-field class="full-width">
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput type="text" formControlName="usuario" name="usuario">
+                      @if (registroForm.get('usuario')?.hasError('required')) {
+                          <mat-error>
+                              Nombre de usuario no válido
+                          </mat-error>
+                      }
+              </mat-form-field>
+
+          </div>
+
+          <div class="doubleInput">
+
+              <mat-form-field class="full-width">
+                <mat-label>Apellidos</mat-label>
+                <input matInput type="text" formControlName="apellidos" name="apellidos">
+                      @if (registroForm.get('apellidos')?.hasError('required')) {
+                          <mat-error>
+                              Apellidos no validos
+                          </mat-error>
+                      }
+              </mat-form-field>
+            
+              <mat-form-field class="full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="contrasena" name="contrasena">
+                      @if (registroForm.get('contrasena')?.hasError('required')) {
+                          <mat-error>
+                              Contraseña no válida
+                          </mat-error>
+                      }
+              </mat-form-field>
+
+          </div>
+
+          <div class="doubleInput">
+
+              <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email" name="email">
+                      @if (registroForm.get('email')?.hasError('required')) {
+                          <mat-error>
+                              Email no válido
+                          </mat-error>
+                      }
+              </mat-form-field>
+            
+              <mat-form-field class="full-width">
+                <mat-label>Repetir contraseña</mat-label>
+                <input matInput type="password" formControlName="repetirContrasena" name="repetirContrasena">
+                      @if (registroForm.get('repetirContrasena')?.hasError('required')) {
+                          <mat-error>
+                              Tiene que repetir la contraseña
+                          </mat-error>
+                      }
+              </mat-form-field>
+
+          </div>
+        </form>
+      } @else {
+        <form class="registroForm" [formGroup]="registroForm">
+          <mat-form-field class="full-width2">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="nombre" name="nombre">
+                    @if (registroForm.get('nombre')?.hasError('required')) {
+                      <mat-error>
+                        Nombre no válido
+                      </mat-error>
+                    }
+          </mat-form-field>
+        
+          <mat-form-field class="full-width2">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput type="text" formControlName="usuario" name="usuario">
+                      @if (registroForm.get('usuario')?.hasError('required')) {
+                          <mat-error>
+                              Nombre de usuario no válido
+                          </mat-error>
+                      }
+          </mat-form-field>
+  
+          <mat-form-field class="full-width2">
+            <mat-label>Apellidos</mat-label>
+            <input matInput type="text" formControlName="apellidos" name="apellidos">
+                      @if (registroForm.get('apellidos')?.hasError('required')) {
+                          <mat-error>
+                              Apellidos no válidos
+                          </mat-error>
+                      }
+          </mat-form-field>
+        
+          <mat-form-field class="full-width2">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="contrasena" name="contrasena">
+                      @if (registroForm.get('contrasena')?.hasError('required')) {
+                          <p>Error</p>
+                      }
+          </mat-form-field>
+  
+          <mat-form-field class="full-width2">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email" name="email">
+                      @if (registroForm.get('email')?.hasError('required')) {
+                          <mat-error>
+                              Email no válido
+                          </mat-error>
+                      }
+          </mat-form-field>
+        
+          <mat-form-field class="full-width2">
+            <mat-label>Repetir contraseña</mat-label>
+            <input matInput type="password" formControlName="repetirContrasena" name="repetirContrasena">
+                      @if (registroForm.get('repetirContrasena')?.hasError('required')) {
+                          <mat-error>
+                              Tiene que repetir la contraseña
+                          </mat-error>
+                      }
+          </mat-form-field>
+        </form>
+      }
+
+    <div>
+      <div class="checkboxes">
+          <mat-checkbox class="example-margin" #terminos>Aceptar términos y condiciones*</mat-checkbox>
+          <mat-checkbox class="example-margin">Enviar emails con ofertas</mat-checkbox>
+      </div>
+  
+      <div class="endForm">
+          <p>¿Ya tienes cuenta? <span class="goLogin" routerLink="/login">Inicia sesión aquí</span></p>
+          @if (terminos.checked == true && registroForm.valid) {
+            <button mat-raised-button color="primary" class="registrarse" (click)="sendRegistro()">Registrarse</button>
+          } @else {
+            <button mat-raised-button class="registrarse" disabled="disabled">Registrarse</button>
+          }
+      </div>
+    </div>
+</div>

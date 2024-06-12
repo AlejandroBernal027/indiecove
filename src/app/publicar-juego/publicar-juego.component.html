@@ -1,0 +1,211 @@
+<div class="Contenedor">
+  <h1>Publicar Juego</h1>
+  <div class="formularioUpper">
+    <form class="example-full-width" [formGroup]="JuegoForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre del juego</mat-label>
+        <input matInput type="text" formControlName="nombreJuego" name="nombreJuego">
+          @if (JuegoForm.get('nombreJuego')?.hasError('required')) {
+            <mat-error>
+              Nombre no válido
+            </mat-error>
+          }
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Sinopsis</mat-label>
+        <textarea #textarea matInput [placeholder]="placeholderDescripcion"></textarea>
+      </mat-form-field>
+
+      <div class="full-width">
+        <mat-form-field>
+          <mat-label>Etiquetas</mat-label>
+          <mat-select [formControl]="Etiquetas" multiple>
+            <mat-select-trigger>
+                @for (etiquetaSeleccionada of Etiquetas.value; track $index) {
+                  @if ($index < 6) {
+                    {{Etiquetas.value?.[$index] || ''}}, 
+                  } @else if ($index == 6) {
+                    {{Etiquetas.value?.[$index]}}
+                  }
+                }
+                @if ((Etiquetas.value?.length || 0) > 7) {
+                <span class="example-additional-selection">
+                    (+{{(Etiquetas.value?.length || 0) - 7}} {{Etiquetas.value?.length === 8 ? 'más' : 'más'}})
+                </span>
+                }
+            </mat-select-trigger>
+            @for (etiqueta of EtiquetasList; track etiqueta) {
+                <mat-option [value]="etiqueta">{{etiqueta}}</mat-option>
+            }
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Precio</mat-label>
+          <input matInput type="text" formControlName="precio" name="precio">
+          @if (JuegoForm.get('precio')?.hasError('required')) {
+            <mat-error>
+              precio no válido
+            </mat-error>
+          }
+        </mat-form-field>
+
+      </div>
+    </form>
+  </div>
+  
+  <div class="subirImagenes">
+      <mat-radio-group aria-label="">
+        
+        <div id="imgContainer">
+          <div>
+            <mat-radio-button #button1 checked value="1">
+              @if (button1.checked) {
+                <p class="smallText">Imagen principal</p>
+              } @else {
+                <p class="smallText">Seleccionar como imagen</p>
+              }
+            </mat-radio-button>
+            @if (!base64Image1){
+              <div class="center">
+                <ngx-file-drop dropZoneClassName="innercenter" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, 1)" 
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                  <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div (click)="openFileSelector()">
+                      <mat-icon>add</mat-icon>
+                    </div>
+                  </ng-template>
+                </ngx-file-drop>
+              </div>
+            }
+            @else if (base64Image1){
+              <div>
+                <img [src]="base64Image1" alt="Uploaded Image" width="250px" height="250px">
+                <button mat-stroked-button (click)="deleteImage(1)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+          <div>
+            <mat-radio-button #button2 value="2">
+              @if (button2.checked) {
+                <p class="smallText">Imagen principal</p>
+              } @else {
+                <p class="smallText">Seleccionar como imagen principal</p>
+              }
+            </mat-radio-button>
+            @if (!base64Image2){
+              <div class="center">
+                <ngx-file-drop dropZoneClassName="innercenter" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, 2)" 
+                  (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                  <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div (click)="openFileSelector()">
+                      <mat-icon>add</mat-icon>
+                    </div>
+                  </ng-template>
+                </ngx-file-drop>
+              </div>
+            }
+            @else if (base64Image2){
+              <div>
+                <img [src]="base64Image2" alt="Uploaded Image" width="250px" height="250px">
+                <button mat-stroked-button (click)="deleteImage(2)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+          <div>
+            <mat-radio-button #button3 value="3">
+              @if (button3.checked) {
+                <p class="smallText">Imagen principal</p>
+              } @else {
+                <p class="smallText">Seleccionar como imagen principal</p>
+              }
+            </mat-radio-button>
+            @if (!base64Image3){
+              <div class="center">
+                <ngx-file-drop dropZoneClassName="innercenter" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, 3)" 
+                  (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                  <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div (click)="openFileSelector()">
+                      <mat-icon>add</mat-icon>
+                    </div>
+                  </ng-template>
+                </ngx-file-drop>
+              </div>
+            }
+            @else if (base64Image3){
+              <div>
+                <img [src]="base64Image3" alt="Uploaded Image" width="250px" height="250px">
+                <button mat-stroked-button (click)="deleteImage(3)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+          <div>
+            <mat-radio-button #button4 value="4">
+              @if (button4.checked) {
+                <p class="smallText">Imagen principal</p>
+              } @else {
+                <p class="smallText">Seleccionar como imagen principal</p>
+              }
+            </mat-radio-button>
+            @if (!base64Image4){
+              <div class="center">
+                <ngx-file-drop dropZoneClassName="innercenter" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, 4)" 
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                  <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div (click)="openFileSelector()">
+                      <mat-icon>add</mat-icon>
+                    </div>
+                  </ng-template>
+                </ngx-file-drop>
+              </div>
+            }
+            @else if (base64Image4){
+              <div>
+                <img [src]="base64Image4" alt="Uploaded Image" width="250px" height="250px">
+                <button mat-stroked-button (click)="deleteImage(4)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+          <div>
+            <mat-radio-button #button5 value="5">
+              @if (button5.checked) {
+                <p class="smallText">Imagen principal</p>
+              } @else {
+                <p class="smallText">Seleccionar como imagen principal</p>
+              }
+            </mat-radio-button>
+            @if (!base64Image5){
+              <div class="center">
+                <ngx-file-drop dropZoneClassName="innercenter" dropZoneLabel="Drop files here" (onFileDrop)="dropped($event, 5)" 
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    <div (click)="openFileSelector()">
+                      <mat-icon>add</mat-icon>
+                    </div>
+                  </ng-template>
+                </ngx-file-drop>
+              </div>
+            } @else if (base64Image5){
+              <div>
+                <img [src]="base64Image5" alt="Uploaded Image" width="250px" height="250px">
+                <button mat-stroked-button (click)="deleteImage(5)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      </mat-radio-group>
+  </div>
+
+  <button mat-raised-button color="primary" class="sendJuego" (click)="publicarJuego()">Publicar juego</button>
+</div>

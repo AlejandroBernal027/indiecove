@@ -1,0 +1,71 @@
+mat-tab-group {
+    height: 100%;
+}
+
+.tab {
+    height: 100%;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.file-upload button {
+    margin-left: 1em;
+}
+
+.cambiarContrasenaContenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    background-color: #FFFBDC;
+}
+
+.cambiarContrasenaForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80%;
+    width: 100%;
+    margin-top: 2em;
+}
+
+.full-width {
+    width: 80%;
+}
+
+.cambiaContrasena {
+    margin-bottom: 2em;
+    font-size: 25px;
+    letter-spacing: normal;
+    padding: 1em;
+    font-weight: bold;
+}
+
+@media (max-width: 425px) {
+    .tab {
+        font-size: 20px;
+    }
+
+    .cambiarContrasenaForm {
+        justify-content: space-evenly;
+        margin: 0;
+    }
+
+    .cambiaContrasena {
+        margin-bottom: 2em;
+        font-size: 20px;
+        letter-spacing: normal;
+        padding: 1em;
+        font-weight: bold;
+    }
+}

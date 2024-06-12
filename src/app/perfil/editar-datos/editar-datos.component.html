@@ -1,0 +1,95 @@
+<mat-tab-group id="Contenedor">
+    <mat-tab label="Editar datos" class="tab">
+        <div class="cambiarContrasenaContenido">
+            <form class="cambiarContrasenaForm" [formGroup]="editDatos">
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Introduce tu nuevo usuario</mat-label>
+                    <input matInput type="text" formControlName="usuario" name="usuario">
+                    @if (editDatos.get('usuario')?.hasError('required')) {
+                        <mat-error>
+                            Debe tener un nombre de usuario
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Introduce tu nuevo nombre</mat-label>
+                    <input matInput type="text" formControlName="nombre" name="nombre">
+                    @if (editDatos.get('nombre')?.hasError('required')) {
+                        <mat-error>
+                            Debe tener un nombre
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Introduce tus nuevos apellidos</mat-label>
+                    <input matInput type="text" formControlName="apellidos" name="apellidos">
+                    @if (editDatos.get('apellidos')?.hasError('required')) {
+                        <mat-error>
+                            Debe tener apellidos
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <div>
+                    <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+                    <div class="file-upload">
+    
+                        {{fileName || "Sube otra foto de pefil"}}
+                     
+                         <button mat-mini-fab color="primary" class="upload-btn"
+                           (click)="fileUpload.click()">
+                             <mat-icon>attach_file</mat-icon>
+                         </button>
+                    </div>
+                </div>
+              </form>
+    
+              <button mat-raised-button color="accent" class="cambiaContrasena" (click)="submitNuevosDatos()">
+                Cambiar Datos
+              </button>
+        </div>
+    </mat-tab>
+    <mat-tab label="Modificar contraseña" class="tab">
+        <div class="cambiarContrasenaContenido">
+            <form class="cambiarContrasenaForm" [formGroup]="editContrasena">
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Introduce la contraseña antigua</mat-label>
+                    <input matInput type="password" formControlName="contrasenaAntigua" name="contrasenaAntigua">
+                    @if (editContrasena.get('contrasenaAntigua')?.hasError('required')) {
+                        <mat-error>
+                            Debe introducir la contraseña antigua para poder cambiarla
+                        </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Introduce la contraseña nueva</mat-label>
+                    <input matInput type="password" formControlName="contrasenaNueva" name="contrasenaNueva">
+                    @if (editContrasena.get('contrasenaNueva')?.hasError('required')) {
+                        <mat-error>
+                            Debe introducir la contraseña nueva para poder cambiarla
+                        </mat-error>
+                    }
+                </mat-form-field>
+                
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>Repite la contraseña nueva</mat-label>
+                    <input matInput type="password" formControlName="repetirContrasena" name="repetirContrasena">
+                    @if (editContrasena.get('repetirContrasena')?.hasError('required')) {
+                        <mat-error>
+                            Debe repetir la contraseña nueva para poder cambiarla
+                        </mat-error>
+                    }
+                </mat-form-field>
+            </form>
+                
+              <button mat-raised-button color="accent" class="cambiaContrasena" (click)="submitNuevaContrasena()">
+                Cambiar contraseña
+              </button>
+        </div>
+    </mat-tab>
+</mat-tab-group>

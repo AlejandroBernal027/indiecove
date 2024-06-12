@@ -1,0 +1,91 @@
+<div id="Contenedor">
+
+    <span class="listaHeader">
+        <h1>Lista de deseados</h1>
+
+        <mat-form-field>
+            <mat-label>Ordenar por:</mat-label>
+            <mat-select #selectOrdenar [formControl]="opciones" (selectionChange)="filtrar()">
+                @for (opcion of opcionesList; track opcion) {
+                    <mat-option [value]="opcion.valor">{{opcion.opcion}}</mat-option>
+                }
+            </mat-select>
+          </mat-form-field>
+    </span>
+
+    <div class="listaDeseadosContenido">
+        @if (mobileLayout == false) {
+            @for (game of tableData; track $index) {
+                <div class="cardContainer">
+                    <img mat-card-image [src]="game.Img_principal" [alt]="game.Nombre"  [routerLink]="['/detallesJuego', game.idJuego]">
+                    <mat-card>
+                        @if (game.Rebaja > 0) {
+                            <div class="sale">
+                                <img src="../../assets/img/Iconos/SaleIcon.png">
+                                <p>-{{game.Rebaja}}%</p>
+                            </div>
+                        }
+                        @if (changeLayout == false) {
+                            <mat-card-header [routerLink]="['/detallesJuego', game.idJuego]">
+                                <mat-card-title>{{game.Nombre}}</mat-card-title>
+                            </mat-card-header>
+                               
+                            <mat-card-content [routerLink]="['/detallesJuego', game.idJuego]">
+                                <mat-chip-listbox>
+                                @for (tag of game.Etiquetas.split(","); track $index) {
+                                    <mat-chip disabled>{{tag}}</mat-chip>
+                                }
+                                </mat-chip-listbox>
+                            </mat-card-content>
+                        } @else {
+                            <div class="layoutResponsive">
+                                <mat-card-header [routerLink]="['/detallesJuego', game.idJuego]">
+                                    <mat-card-title>{{game.Nombre}}</mat-card-title>
+                                </mat-card-header>
+                                
+                                <mat-card-content [routerLink]="['/detallesJuego', game.idJuego]">
+                                    <mat-chip-listbox>
+                                    @for (tag of game.Etiquetas.split(","); track $index) {
+                                        <mat-chip disabled>{{tag}}</mat-chip>
+                                    }
+                                    </mat-chip-listbox>
+                                </mat-card-content>
+                            </div>
+                        }
+                        <button mat-raised-button color="accent" class="addToCarro" (click)="addCarrito(game.idJuego)">
+                            <img src="../../assets/img/Iconos/AddToCarritoIcon.png">
+                        </button>
+                    </mat-card>
+                </div>
+            }        
+        } @else {
+            @for (game of tableData; track $index) {
+                <mat-card class="mobileCard">
+                    <img mat-card-image [src]="game.Img_principal" [alt]="game.Nombre"  [routerLink]="['/detallesJuego', game.idJuego]">
+                    @if (game.Rebaja > 0) {
+                        <div class="sale">
+                            <img src="../../assets/img/Iconos/SaleIcon.png">
+                            <p>-{{game.Rebaja}}%</p>
+                        </div>
+                    }
+                    <mat-card-header [routerLink]="['/detallesJuego', game.idJuego]">
+                        <mat-card-title>{{game.Nombre}}</mat-card-title>
+                    </mat-card-header>
+                    
+                    <mat-card-content [routerLink]="['/detallesJuego', game.idJuego]">
+                        <mat-chip-listbox>
+                            @for (tag of game.Etiquetas.split(","); track $index) {
+                                <mat-chip disabled>{{tag}}</mat-chip>
+                            }
+                        </mat-chip-listbox>
+                    </mat-card-content>
+
+                    <button mat-raised-button color="accent" class="addToCarro" (click)="addCarrito(game.idJuego)">
+                        Añadir al carrito
+                    </button>
+                </mat-card>
+                }
+        }
+
+    </div>
+</div>

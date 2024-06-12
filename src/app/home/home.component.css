@@ -1,0 +1,422 @@
+#contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+#carrusel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagenes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 4em 0 1.5em 0;
+}
+
+.centerImg {
+    width: 45%;
+    height: 45%;
+    box-shadow:0px 0px 4px 5px #AEAFB0;
+}
+
+.leftImg, .rightImg {
+    width: 35%;
+    height: 35%;
+}
+
+.leftImg {
+    box-shadow:14px 9px 4px #AEAFB0;
+}
+
+.rightImg {
+    box-shadow:-14px 9px 4px #AEAFB0;
+}
+
+.leftImg, .rightImg, .centerImg {
+    cursor: pointer;
+}
+
+.carruselLeft, .carruselRight {
+    height: 60px;
+    width: 60px;
+    margin: 0 1.25%;
+    cursor: pointer;
+}
+
+.carruselRight {
+    transform: rotate(180deg);
+}
+
+.imgSelectors {
+    display: flex;
+    justify-content: space-evenly;
+    width: 20%;
+    margin-bottom: 6em;
+}
+
+.radioClick {
+    cursor: pointer;
+}
+
+#novedades, #populares, #rebajas, #eleccionJugadores {
+    width: 80%;
+    margin-bottom: 5em;
+}
+
+.titulo {
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid black;
+    width: 45%;
+    margin-left: 0.5em;
+}
+
+.titulo img {
+    margin-bottom: 1%;
+}
+
+.titulo h2, .titulo a {
+    margin-bottom: 4%;
+    font-family: Lora;
+}
+
+.titulo h2 {
+    font-size: 46px;
+    font-weight: bold;
+    margin-right: 0.5em;
+    margin-left: 0.75em;
+}
+
+.titulo a {
+    font-size: 25px;
+    color: #1B6FA7;
+}
+
+mat-card {
+    width: 18%;
+    /* height: 300px; */
+}
+
+mat-card .imgJuego {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: #1B6FA7;
+    height: 20%;
+}
+
+mat-card-content p {
+    padding-top: 16px;
+    font-size: 25px;
+    line-height: 25px;
+    text-align: center;
+    color: white;
+}
+
+mat-card-content .smallText {
+    font-size: 20px;
+}
+
+.example-card {
+    margin: 1em 0.5em 2em;
+}
+
+.example-card :hover, mat-card :hover {
+    background-color: #124B71;
+    cursor: pointer;
+}
+
+.novedadesJuegos, .popularesJuegos, .rebajasJuegos, .eleccionJuegos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.sale {
+    position: absolute;
+    top: -3%;
+    right: 5%;
+}
+
+.sale p {
+    position: absolute;
+    margin: 0;
+    top: 35%;
+    left: 15%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.rebajasJuegos mat-card {
+    min-width: 325px;
+}
+
+.rebajasJuegos .sale {
+    scale: 1.2;
+    top: -1%
+}
+
+.cardEleccion {
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+    margin-bottom: 2em;
+}
+
+.cardEleccion :hover {
+    background-color: #124B71;
+    cursor: pointer;
+}
+
+.descripcionJuego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    text-align: center;
+    background-color: #1B6FA7;
+    color: white;
+}
+
+.descripcionJuego h3 {
+    font-size: 29px;
+    font-weight: 400;
+}
+
+.cardEleccion > img {
+    width: 200px;
+    object-fit: cover;
+}
+
+.descripcionJuego span {
+    display: flex;
+    align-items: center;
+}
+
+.descripcionJuego span h4 {
+    margin: 0;
+}
+
+.descripcionJuego span img {
+    padding-left: 0.5em;
+}
+
+/* Responsive */
+
+@media (max-width:1440px) {
+    .rebajasJuegos .example-card {
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .imgSelectors {
+        width: 30%;
+    }
+
+    .imgSelectors img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carruselLeft, .carruselRight {
+        height: 45px;
+        width: 45px;
+        margin: 0 1.25%;
+    }
+
+    .titulo {
+        width: 55%;
+    }
+
+    .titulo img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .titulo h2 {
+        font-size: 32px
+    }
+
+    .titulo a {
+        font-size: 20px;
+        color: #1B6FA7;
+    }
+
+    mat-card {
+        width: 30%;
+        height: 315px;
+    }
+
+    .imgJuego {
+        height: 260px;
+    }
+
+    mat-card-content p {
+        font-size: 20px;
+    }
+
+    .rebajasJuegos {
+        justify-content: space-around;
+    }
+
+    .rebajasJuegos .example-card {
+        min-width: 265px;
+        margin: 2em 0.5em;
+    }
+
+    .cardEleccion {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .centerImg {
+        width: 55%;
+    }
+
+    .imgSelectors {
+        width: 35%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .imgSelectors {
+        width: 40%;
+    }
+
+    .titulo {
+        width: 70%;
+    }
+
+    mat-card {
+        width: 45%;
+        height: 315px;
+    }
+
+    .rebajasJuegos .example-card {
+        min-width: 225px;
+    }
+
+    .imgRebaja {
+        height: 255px;
+    }
+
+    .sale p {
+        font-size: 20px;
+    }
+
+    .sale img {
+        width: 60px;
+        height: 90px;
+    }
+
+    .eleccionJuegos .cardEleccion h3 {
+        font-size: 25px;
+    }
+
+    .eleccionJuegos .cardEleccion p {
+        font-size: 12px;
+    }
+
+    .eleccionJuegos .cardEleccion h4 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 430px) {
+    .imgSelectors {
+        width: 70%;
+    }   
+
+    .leftImg, .rightImg, .carruselLeft, .carruselRight {
+        display: none;
+    }
+
+    .centerImg {
+        width: 90%;
+    }
+
+    .titulo {
+        width: 95%;
+    }
+
+    .titulo img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .titulo h2 {
+        font-size: 25px;
+        margin-bottom: 0.3em;
+    }
+
+    .titulo a {
+        font-size: 16px;
+        margin-bottom: 0.7em
+    }
+
+    .novedadesJuegos, .popularesJuegos, .rebajasJuegos, .eleccionJuegos {
+        display: flex;
+        justify-content: center;
+        margin-top: 2em;
+    }
+
+    mat-card {
+        width: 75%;
+        height: 315px;
+    }
+
+    .eleccionJuegos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardEleccionVertical {
+        margin-bottom: 2em;
+        height: auto;
+    }
+
+    .cardEleccionVertical .descripcionJuego{
+        height: auto;
+    }
+
+    .eleccionJuegos .cardEleccionVertical h3 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .eleccionJuegos .cardEleccionVertical p {
+        font-size: 12px;
+    }
+
+    .eleccionJuegos .cardEleccionVertical h4 {
+        font-size: 14px;
+    }
+
+}
+
+    @media (max-width: 321px) {
+        #novedades, #populares, #rebajas, #eleccionJugadores {
+            width: 95%;
+            margin-bottom: 5em;
+        }
+    }
