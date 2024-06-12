@@ -29,7 +29,6 @@ export class DetallesJuegoComponent implements OnInit{
   @ViewChild('textarea') comentario!: ElementRef<HTMLTextAreaElement>
 
   valoracionPuntuacion: string[] =['0 estrellas', '1 estrellas', '2 estrellas', '3 estrellas', '4 estrellas', '5 estrellas']
-
   valoraciones!: Valoracion[];
 
   changeLayout: boolean = false;
@@ -50,8 +49,9 @@ export class DetallesJuegoComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.cargarLugar();
+    this.cargarJuego();
     this.rol = sessionStorage.getItem("Rol");
+    // los breakpointObserver los uso para que la página sea más responsive
     this.breakpointObserver
       .observe(['(min-width: 769px)'])
       .subscribe((state: BreakpointState) => {
@@ -74,11 +74,13 @@ export class DetallesJuegoComponent implements OnInit{
       });
   }
 
+  // Esta funcion cambia la imagen principal de la gridlist dependiendo del src que se le pase. Todos los src de la base de datos son imgenes en base64. 
   changeMainImgSrc(src: string) {
     this.srcMainImg = src;
   }
 
-  cargarLugar() {
+  // Esta funcion, dependiendo del id que tenga, carga un juego u otro junto a sus valoraciones. 
+  cargarJuego() {
     this._route.params.subscribe(params => {
       this.idJuego = params['id'];
       this._juegoService.getJuego(this.idJuego.toString()).subscribe({
@@ -117,6 +119,7 @@ export class DetallesJuegoComponent implements OnInit{
     })
   }
 
+  // Esta función manda la valoración que haya escrito un usuario.
   mandarValoracion() {
     let verificado = sessionStorage.getItem("Verficado");
     if (this.valoracionForm.valid) {
@@ -145,6 +148,7 @@ export class DetallesJuegoComponent implements OnInit{
     }
   }
 
+  // Esta función añade al carrito el juego, si no está dentro ya
   addCarrito(id: number) {
     let verificado = sessionStorage.getItem("Verficado");
     if (verificado == "true") {
@@ -161,6 +165,7 @@ export class DetallesJuegoComponent implements OnInit{
     }
   }
 
+  // Esta función añade a la lsita de deseados el juego, si no está dentro ya
   addListaDeseados() {
     let verificado = sessionStorage.getItem("Verficado");
     if (verificado == "true"){
@@ -188,6 +193,7 @@ export class DetallesJuegoComponent implements OnInit{
     }
   }
 
+  // Estas funciones hacen que se aparezcan las snackbars correspondientes al resultado de la acción.
   openSnackBarAddCarrito() {
     this._snackBar.open('Juego añadido al carrito', '', {
         duration: 3000,

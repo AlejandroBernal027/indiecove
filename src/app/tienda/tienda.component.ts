@@ -61,6 +61,7 @@ export class TiendaComponent implements OnInit{
       });
   }
 
+  // Esta función carga todos los juegos de la tienda
   cargarJuegos() {
     this._juegoService.getJuegosList().subscribe({
       next: (val: Juego[]) => {
@@ -76,6 +77,7 @@ export class TiendaComponent implements OnInit{
     })
   }
 
+  // Como usa un space between y no ocupa todo el espacio del div, deja un espacio enorme. Para evitarlo añado elementos vacios.
   rellenar() {
     if (this.tableData.length%4 != 0) {
       for (let i = 0; i < this.tableData.length; i++) {
@@ -102,6 +104,7 @@ export class TiendaComponent implements OnInit{
     }
   }
 
+  // Calcula el precio que se muestra en cada juego si tiene rebaja
   calculoPrecio(){
     for (let game of this.tableData) {
       if (game.Rebaja > 0) {
@@ -115,6 +118,7 @@ export class TiendaComponent implements OnInit{
     }
   }
 
+  // Esta función filtra los juegos
   filtrar(){
     this.tableData = this.tablaDatos;
     let opciones: string[] = []
@@ -183,12 +187,14 @@ export class TiendaComponent implements OnInit{
       this.rellenar();
   }
 
+  // Esta función sirve para filtrar usando el slider
   sliderValues(value1: string, value2: string) {
     this.actualMinSlider = Math.round(parseInt(value1));
     this.actualMaxSlider = Math.round(parseInt(value2));
     this.filtrar();
   }
 
+  // Esta función introduce los valores máximos y mínimos del slider.
   setSlider() {
     let max = 0;
     let min = 999;

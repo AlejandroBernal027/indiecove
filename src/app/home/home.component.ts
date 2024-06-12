@@ -9,6 +9,8 @@ import {BreakpointObserver, BreakpointState, Breakpoints} from '@angular/cdk/lay
 })
 export class HomeComponent implements OnInit{
   
+  // Hay un problema en el home, es que no tiene datos dinámicos y todo es estático
+
   carruselImgs: string[] = [
     '../../assets/img/carruselHome/CelesteCarrusel.jpg',
     '../../assets/img/carruselHome/InStarsAndTimeCarrusel.png',
@@ -105,6 +107,7 @@ export class HomeComponent implements OnInit{
   constructor(public breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
+    // los breakpointObserver los uso para que la página sea más responsive
     this.breakpointObserver
       .observe(['(min-width: 1025px)'])
       .subscribe((state: BreakpointState) => {
@@ -138,6 +141,7 @@ export class HomeComponent implements OnInit{
       });
   }
 
+  // Esta funcion sirve para cambiar las imagenes del carrusel dependiendo del radio button marcado
   changeImgByValue(value: number) {
     let cenIndex = value;
     let izqIndex: number;
@@ -169,6 +173,7 @@ export class HomeComponent implements OnInit{
     this.idImgDer = this.carruselImgsID[izqIndex];
   }
 
+  // Esta función pasa a la siguiente imagen del carrusel
   changeNextImg() {
     let izqIndex = this.carruselImgs.indexOf(this.srcImgIzq);
     let cenIndex = this.carruselImgs.indexOf(this.srcImgCen);
@@ -204,6 +209,7 @@ export class HomeComponent implements OnInit{
     this.idImgDer = this.carruselImgsID[izqIndex];
   }
 
+  // Esta función pasa a la anterior imagen del carrusel
   changePrevImg() {
     let izqIndex = this.carruselImgs.indexOf(this.srcImgIzq);
     let cenIndex = this.carruselImgs.indexOf(this.srcImgCen);

@@ -45,6 +45,7 @@ export class RegistroComponent implements OnInit{
       });
   }
   
+  // Esta función manda el registro, depenediendo de los tres primeros carateres se registra un usuario, un desarrollador o un administrador
   sendRegistro() {
     if (this.registroForm.valid) {
       if (this.registroForm.value.contrasena == this.registroForm.value.repetirContrasena) {

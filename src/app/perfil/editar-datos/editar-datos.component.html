@@ -58,7 +58,7 @@
 
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Introduce la contraseña antigua</mat-label>
-                    <input matInput type="password" formControlName="contrasenaAntigua" name="contrasenaAntigua">
+                    <input matInput type="password" formControlName="email" name="email">
                     @if (editContrasena.get('contrasenaAntigua')?.hasError('required')) {
                         <mat-error>
                             Debe introducir la contraseña antigua para poder cambiarla
@@ -66,25 +66,6 @@
                     }
                 </mat-form-field>
 
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Introduce la contraseña nueva</mat-label>
-                    <input matInput type="password" formControlName="contrasenaNueva" name="contrasenaNueva">
-                    @if (editContrasena.get('contrasenaNueva')?.hasError('required')) {
-                        <mat-error>
-                            Debe introducir la contraseña nueva para poder cambiarla
-                        </mat-error>
-                    }
-                </mat-form-field>
-                
-                <mat-form-field class="full-width" appearance="fill">
-                    <mat-label>Repite la contraseña nueva</mat-label>
-                    <input matInput type="password" formControlName="repetirContrasena" name="repetirContrasena">
-                    @if (editContrasena.get('repetirContrasena')?.hasError('required')) {
-                        <mat-error>
-                            Debe repetir la contraseña nueva para poder cambiarla
-                        </mat-error>
-                    }
-                </mat-form-field>
             </form>
                 
               <button mat-raised-button color="accent" class="cambiaContrasena" (click)="submitNuevaContrasena()">

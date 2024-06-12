@@ -12,10 +12,12 @@ export class ValoracionService {
 
   constructor(private _http: HttpClient) { }
 
+  // Obtiene las valoraciones de un juego
   getValoracionesListByGameId(id: number): Observable<Valoracion[]> {
     return this._http.get<Valoracion[]>(`${this.URL_API}/getByGameId/${id}`);
   }
 
+  // Añade una valoración
   addValoracion(valoracion: Valoracion): Observable<Valoracion>{
     console.log(valoracion);
     return this._http.post<Valoracion>(`${this.URL_API}/registrarValoracion`, valoracion);

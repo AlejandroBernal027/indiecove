@@ -12,10 +12,12 @@ export class ComprasService {
 
   constructor(private _http: HttpClient) { }
 
+  // Registra una compra
   registrarCompra(compra: Compras): Observable<Compras> {
     return this._http.post<Compras>(`${this.URL_API}/registrarCompra`, compra);
   }
 
+  // Introduce un juego en la biblioteca de un jugador
   postJugadorHasJuego(idjugador: number, idjuego: number): Observable<{idJugador: number, idJuego: number}> {
     return this._http.post<{idJugador: number, idJuego: number}>(`${this.URL_API}/makeJugadorHasJuego`, {idJugador: idjugador, idJuego: idjuego})
   }

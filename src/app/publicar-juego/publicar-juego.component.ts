@@ -29,6 +29,7 @@ export class PublicarJuegoComponent {
   Etiquetas = new FormControl('');
   EtiquetasList: string[] = ['3D', 'Plataformas', 'Pixel-Art', 'Ambientales', 'LGBTQ+', 'Gran Banda Sonora', 'Shooter', 'Acción', 'RogueLite', '2D', '2.5D', 'Ritmo', 'Sobrenatural'];
 
+  // Este placeholder sirve para informar a los desarrolladores de como se introduce la sinopsis
   placeholderDescripcion = `Sinopsis\\
 Descripción adicional 1·
 Descripción adicional 2·
@@ -56,6 +57,7 @@ Descripción adicional 2·
     })
   }
  
+  // Esta función carga las imagenes para previsualizarlas
   public dropped(files: NgxFileDropEntry[], number: any) {
     this.files = files;
 
@@ -139,6 +141,7 @@ Descripción adicional 2·
     }
   }
 
+  // Esta función hace la llamada a la API para introducir un nuevo juego en la base de datos
   public publicarJuego() {
     if (this.JuegoForm.valid) {
       let verificado = sessionStorage.getItem("Verficado");

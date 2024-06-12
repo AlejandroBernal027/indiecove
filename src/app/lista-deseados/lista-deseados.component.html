@@ -5,7 +5,7 @@
 
         <mat-form-field>
             <mat-label>Ordenar por:</mat-label>
-            <mat-select #selectOrdenar [formControl]="opciones" (selectionChange)="filtrar()">
+            <mat-select #selectOrdenar [formControl]="opciones" (selectionChange)="ordenar()">
                 @for (opcion of opcionesList; track opcion) {
                     <mat-option [value]="opcion.valor">{{opcion.opcion}}</mat-option>
                 }

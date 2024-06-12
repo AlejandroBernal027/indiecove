@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Administrador, Desarrollador, Jugador } from '../../model/usuarios';
 import { UsuariosService } from '../../services/usuarios.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-editar-datos',
@@ -19,6 +20,7 @@ export class EditarDatosComponent implements OnInit{
 
   constructor(private _fb: FormBuilder,
     private _dialogref: DialogRef, 
+    private _auth: AuthService,
     private _userService: UsuariosService,
     @Inject(MAT_DIALOG_DATA) public data: {usuario: string, nombre: string, apellidos: string}){
     this.editDatos = this._fb.group({
@@ -27,9 +29,7 @@ export class EditarDatosComponent implements OnInit{
       apellidos:['', [Validators.required]],
    }),
    this.editContrasena = this._fb.group({
-    contrasenaAntigua:['', [Validators.required]],
-    contrasenaNueva:['', [Validators.required]],
-    repetirContrasena: ['', [Validators.required]]
+    email:['', [Validators.required]]
    })
  }
 
@@ -37,6 +37,7 @@ export class EditarDatosComponent implements OnInit{
     this.editDatos.patchValue(this.data);
   }
 
+  // Esta función manda los nuevos datos introducidos por el usuario
   submitNuevosDatos() {
     let rol = sessionStorage.getItem("Rol");
     let idUsuario = sessionStorage.getItem("Id Usuario");
@@ -150,21 +151,18 @@ export class EditarDatosComponent implements OnInit{
     }
   }
 
+  // Manda un email para cambiar la contraseña
   submitNuevaContrasena() {
     if (this.editContrasena.valid) {
-      if (this.editContrasena.value.contrasenaNueva == this.editContrasena.value.repetirContrasena) {
-        console.log(this.editContrasena.value);
+      if (this.editContrasena.value.email == "") {
+        this._auth.updatePassword(this.editContrasena.value.email);
         this._dialogref.close(true);
-      } else {
-        alert("La contraseña nueva no se ha introducido bien dos veces");
       }
-    } else {
-      alert("El formulario de cambio de contraseña no es válido");
     }
 
   }
 
-
+  // Pasa la imagen de perfil a base64
   onFileSelected(event: any) {
     const file:File = event.target.files[0];
     if (file) {

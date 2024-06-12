@@ -17,15 +17,9 @@ export class ListaDeseadosComponent implements OnInit{
 
   opcionesList: {opcion: string, valor: string}[] = [{opcion: 'Rebaja', valor: 'rebaja'}, {opcion: 'Alfabético (A-Z)', valor: 'AZ'}, {opcion: 'Alfabético (Z-A)', valor: "ZA"}];
 
+  // Uso dos arrays del tipo juego porque uno es el que muestro por pantalla y otro el que tiene todos los juegos.
   tablaDatos!: Juego[]; 
   tableData!: Juego[];
-  // = [
-  //   {nombre: "GRIS", img:"../../assets/img/novedadesHome/Gris.png", tags: "Ambientales, Casual, Aventura, Coloridos", rebaja: 0},
-  //   {nombre: "Skul: The Hero Slayer", img:"../../assets/img/novedadesHome/skul.png", tags: "RogueLite, Acción, Plataformas, Pixel-Art", rebaja: 0},
-  //   {nombre: "Celeste", img:"../../assets/img/popularesHome/Celeste.png", tags: "Pixel-Art, Plataformas, 2D, Gran Banda Sonora", rebaja: 0},
-  //   {nombre: "Enter The Gungeon", img:"../../assets/img/popularesHome/Gungeon.png", tags: "Pixel-Art, Acción, 2D, RogueLite", rebaja: 30},
-  //   {nombre: "Hollow Knight", img:"../../assets/img/popularesHome/Hollow.png", tags: "Exploración, Acción, Fantasia Oscura, 2D", rebaja: 0},
-  // ]
 
 
   @ViewChild('selectOrdenar') selectOrdenar!: MatSelect;
@@ -41,6 +35,7 @@ export class ListaDeseadosComponent implements OnInit{
   
   ngOnInit(): void {
     this.cargarJuegos();
+    // los breakpointObserver los uso para que la página sea más responsive
     this.breakpointObserver
     .observe(['(min-width: 1025px)'])
     .subscribe((state: BreakpointState) => {
@@ -62,6 +57,7 @@ export class ListaDeseadosComponent implements OnInit{
     });
   }
 
+  // Esta función carga los juegos de la lista de deseados
   cargarJuegos() {
     let idUsuario = sessionStorage.getItem("Id Usuario");
     if (idUsuario !== null) {
@@ -84,6 +80,7 @@ export class ListaDeseadosComponent implements OnInit{
     }
   }
 
+  // Esta función añade un juego al carrito
   addCarrito(id: number) {
     let verificado = sessionStorage.getItem("Verficado");
     if (verificado == "true") {
@@ -101,25 +98,8 @@ export class ListaDeseadosComponent implements OnInit{
     }
   }
 
-  openSnackBarAddCarrito() {
-    this._snackBar.open('Juego añadido al carrito', '', {
-        duration: 3000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top'
-      }
-    )
-  }
-
-  openSnackBarAlreadyCarrito() {
-    this._snackBar.open('El juego ya está en el carrito', '', {
-        duration: 4000,
-        horizontalPosition: 'center',
-        verticalPosition: 'top'
-      }
-    )
-  }
-
-  filtrar(){
+  // Esta función sirve para ordenar los juegos
+  ordenar(){
     let datosFiltrados: any[] = [];
     let opcion = this.selectOrdenar.value;
     let letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -160,6 +140,25 @@ export class ListaDeseadosComponent implements OnInit{
       this.tableData = datosFiltrados;
     }
   }
+
+  openSnackBarAddCarrito() {
+    this._snackBar.open('Juego añadido al carrito', '', {
+        duration: 3000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      }
+    )
+  }
+
+  openSnackBarAlreadyCarrito() {
+    this._snackBar.open('El juego ya está en el carrito', '', {
+        duration: 4000,
+        horizontalPosition: 'center',
+        verticalPosition: 'top'
+      }
+    )
+  }
+
 
   openSnackBarNoVerificado() {
     this._snackBar.open('Necesitas verificar tu cuenta para realizar esta acción', '', {
