@@ -189,7 +189,7 @@ export class CarritoComponent implements OnInit{
   // Esta función es la que se encarga de hacer la compra de juegos
   realizarcompra() {
     if (this.datosFacturaForm.valid) {
-      let verificado = sessionStorage.getItem("Verficado");
+      let verificado = sessionStorage.getItem("Verificado");
       if (verificado == "true"){
 
         if (this.pagoTarjetaForm.valid || this.pagoPrepagoForm.valid) {

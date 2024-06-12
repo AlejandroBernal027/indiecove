@@ -121,7 +121,7 @@ export class DetallesJuegoComponent implements OnInit{
 
   // Esta función manda la valoración que haya escrito un usuario.
   mandarValoracion() {
-    let verificado = sessionStorage.getItem("Verficado");
+    let verificado = sessionStorage.getItem("Verificado");
     if (this.valoracionForm.valid) {
       if (verificado == "true") {
         if (this.idUsuario !== null) {
@@ -150,7 +150,8 @@ export class DetallesJuegoComponent implements OnInit{
 
   // Esta función añade al carrito el juego, si no está dentro ya
   addCarrito(id: number) {
-    let verificado = sessionStorage.getItem("Verficado");
+    let verificado = sessionStorage.getItem("Verificado");
+    
     if (verificado == "true") {
       let cantidadCarrito = JSON.parse(sessionStorage.getItem("cantidadCarrito")!);
       if (!(cantidadCarrito.includes(id))) {
@@ -167,7 +168,8 @@ export class DetallesJuegoComponent implements OnInit{
 
   // Esta función añade a la lsita de deseados el juego, si no está dentro ya
   addListaDeseados() {
-    let verificado = sessionStorage.getItem("Verficado");
+    let verificado = sessionStorage.getItem("Verificado");
+    console.log(verificado);
     if (verificado == "true"){
       let idUsuario = sessionStorage.getItem("Id Usuario")
       if (idUsuario !== null) {

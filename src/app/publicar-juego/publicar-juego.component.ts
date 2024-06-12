@@ -144,7 +144,7 @@ Descripción adicional 2·
   // Esta función hace la llamada a la API para introducir un nuevo juego en la base de datos
   public publicarJuego() {
     if (this.JuegoForm.valid) {
-      let verificado = sessionStorage.getItem("Verficado");
+      let verificado = sessionStorage.getItem("Verificado");
       if (verificado == "true") {
 
         this.idDev = sessionStorage.getItem("Id Usuario");
